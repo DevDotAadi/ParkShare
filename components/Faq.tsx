@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Plus } from "lucide-react";
 import { useAccordionMachine } from "@/lib/state/useAccordionMachine";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
@@ -43,11 +43,117 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
+interface FaqAccordionItemProps {
+  item: FaqItem;
+  index: number;
+  isOpen: boolean;
+  onToggle: (index: number) => void;
+  onKeyDown: (e: React.KeyboardEvent, index: number) => void;
+  setTriggerRef: (el: HTMLButtonElement | null) => void;
+  isReducedMotion: boolean;
+}
+
+function FaqAccordionItem({
+  item,
+  index,
+  isOpen,
+  onToggle,
+  onKeyDown,
+  setTriggerRef,
+  isReducedMotion,
+}: FaqAccordionItemProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState<string>("0px");
+
+  useEffect(() => {
+    if (isReducedMotion) {
+      setMaxHeight(isOpen ? "none" : "0px");
+      return;
+    }
+
+    if (isOpen) {
+      setMaxHeight(`${contentRef.current?.scrollHeight || 0}px`);
+    } else {
+      setMaxHeight("0px");
+    }
+  }, [isOpen, isReducedMotion]);
+
+  // Dynamically update max-height if viewport resizes while panel is open
+  useEffect(() => {
+    if (!isOpen || isReducedMotion) return;
+    const handleResize = () => {
+      if (contentRef.current) {
+        setMaxHeight(`${contentRef.current.scrollHeight}px`);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen, isReducedMotion]);
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      id={`faq-trigger-${index}`}
+      aria-expanded={isOpen}
+      aria-controls={`faq-panel-${index}`}
+      onClick={() => onToggle(index)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onToggle(index);
+        } else {
+          onKeyDown(e, index);
+        }
+      }}
+      ref={(el) => setTriggerRef(el as unknown as HTMLButtonElement)}
+      className="relative p-4 md:p-5 rounded-[13px] cursor-pointer flex flex-col items-center justify-between transition-all duration-500 select-none group text-navy bg-white border border-[#10294B]/[0.10] shadow-[0_2px_5px_rgba(16,41,75,0.03),inset_0_1px_0_#FFFFFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20"
+    >
+      {/* Question Header Row */}
+      <div className="flex flex-row items-center justify-between w-full">
+        <h3 className="text-base md:text-xl font-medium text-navy text-left pr-4 leading-snug">
+          {item.question}
+        </h3>
+
+        {/* Skeuomorphic Pure White Circular Indicator Chip */}
+        <div
+          className="relative h-8 w-8 aspect-square flex items-center justify-center rounded-full shrink-0 transition-all duration-300 bg-white border border-[#10294B]/[0.12] shadow-[0_1px_2px_rgba(16,41,75,0.06),inset_0_1px_0_#FFFFFF]"
+          aria-hidden="true"
+        >
+          <Plus
+            className={`w-4 h-4 text-navy transition-transform duration-500 ${
+              isOpen ? "rotate-45" : "rotate-0"
+            }`}
+            strokeWidth={2}
+          />
+        </div>
+      </div>
+
+      {/* Accordion Body: 1:1 Webild.io scrollHeight max-height Fall Transition */}
+      <div
+        id={`faq-panel-${index}`}
+        role="region"
+        aria-labelledby={`faq-trigger-${index}`}
+        ref={contentRef}
+        style={{
+          maxHeight,
+          transitionDuration: isReducedMotion ? "0ms" : "500ms",
+        }}
+        className="overflow-hidden transition-[max-height] duration-500 w-full flex flex-col"
+      >
+        <div className="text-base text-[#566070] pt-2 leading-relaxed">
+          {item.answer}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Faq() {
   const isReducedMotion = useReducedMotion();
   const { isOpen, toggle, triggerRefs, handleKeyDown } = useAccordionMachine({
     totalItems: FAQ_ITEMS.length,
-    defaultOpenIndex: 0,
+    defaultOpenIndex: null,
     allowMultiple: false,
   });
 
@@ -55,6 +161,7 @@ export default function Faq() {
     <section
       id="faq"
       className="w-full bg-white scroll-mt-[96px]"
+      aria-label="FAQ section"
     >
       <div className="wrap">
         {/* Centered Section Header */}
@@ -67,89 +174,22 @@ export default function Faq() {
           </h2>
         </div>
 
-        {/* Skeuomorphic Accordion Stack (webild.io style: full wrap width, physical depth) */}
-        <div className="mt-9 sm:mt-11 w-full flex flex-col gap-3 sm:gap-3.5">
-          {FAQ_ITEMS.map((item, idx) => {
-            const itemOpen = isOpen(idx);
-
-            return (
-              <div
-                key={idx}
-                data-state={itemOpen ? "open" : "closed"}
-                className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  itemOpen
-                    ? "border-[#10294B]/[0.14] shadow-[inset_0_1px_0_#FFFFFF,0_2px_6px_rgba(16,41,75,0.05)]"
-                    : "border-[#10294B]/[0.10] shadow-[inset_0_1px_0_#FFFFFF,0_1px_3px_rgba(16,41,75,0.03)] hover:border-[#10294B]/[0.16]"
-                }`}
-              >
-                {/* Accordion Trigger Button */}
-                <button
-                  ref={(el) => {
-                    triggerRefs.current[idx] = el;
-                  }}
-                  id={`faq-trigger-${idx}`}
-                  type="button"
-                  onClick={() => toggle(idx)}
-                  onKeyDown={(e) => handleKeyDown(e, idx)}
-                  aria-expanded={itemOpen}
-                  aria-controls={`faq-panel-${idx}`}
-                  data-state={itemOpen ? "open" : "closed"}
-                  className="w-full px-5 py-4 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-3.5 sm:gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-2"
-                >
-                  <span className="text-[16px] sm:text-[19px] font-medium text-navy leading-[1.35]">
-                    {item.question}
-                  </span>
-
-                  {/* Skeuomorphic Circular Indicator Chip (webild.io style: rotating plus-to-cross, physical lighting, seamless) */}
-                  <span
-                    data-state={itemOpen ? "open" : "closed"}
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      itemOpen
-                        ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.16] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
-                        : "bg-gradient-to-b from-[#FFFFFF] to-[#F2F5F9] border-[#10294B]/[0.12] shadow-[inset_0_1px_0_#FFFFFF,0_1px_2px_rgba(16,41,75,0.06)] hover:border-[#10294B]/[0.20]"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    <Plus
-                      size={18}
-                      strokeWidth={2.2}
-                      className={`text-navy transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                        itemOpen ? "rotate-45" : "rotate-0"
-                      }`}
-                    />
-                  </span>
-                </button>
-
-                {/* Accordion Body with Smooth Webild.io Fall Transition */}
-                <div
-                  id={`faq-panel-${idx}`}
-                  role="region"
-                  aria-labelledby={`faq-trigger-${idx}`}
-                  data-state={itemOpen ? "open" : "closed"}
-                  className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
-                  style={{
-                    gridTemplateRows: itemOpen ? "1fr" : "0fr",
-                    transitionDuration: isReducedMotion ? "0ms" : undefined,
-                  }}
-                >
-                  <div className="overflow-hidden">
-                    <p
-                      className={`px-5 pb-5 pt-0 sm:px-7 sm:pb-6 text-[14.5px] sm:text-[16px] leading-[1.65] text-[#566070] font-normal transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                        itemOpen
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
-                      style={{
-                        transitionDuration: isReducedMotion ? "0ms" : undefined,
-                      }}
-                    >
-                      {item.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        {/* 1:1 Webild.io Accordion Stack */}
+        <div className="mt-9 sm:mt-11 w-full flex flex-col gap-5">
+          {FAQ_ITEMS.map((item, idx) => (
+            <FaqAccordionItem
+              key={idx}
+              item={item}
+              index={idx}
+              isOpen={isOpen(idx)}
+              onToggle={toggle}
+              onKeyDown={handleKeyDown}
+              setTriggerRef={(el) => {
+                triggerRefs.current[idx] = el;
+              }}
+              isReducedMotion={isReducedMotion}
+            />
+          ))}
         </div>
       </div>
     </section>
