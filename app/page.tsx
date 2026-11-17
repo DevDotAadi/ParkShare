@@ -39,24 +39,27 @@ export default function Home() {
       {/* Spacer 1:1 like webild.io */}
       <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
 
-      {/* Final CTA Section */}
+      {/* Final CTA Section: Clean white section matching other sections, no divider lines */}
       <section
         id="cta"
-        className="w-full bg-band text-white py-[clamp(72px,9vw,128px)] scroll-mt-[96px]"
+        className="w-full bg-white text-navy scroll-mt-[96px]"
       >
         <div className="wrap flex flex-col items-center justify-center text-center">
-          <h2 className="text-white font-bold text-[clamp(34px,4.2vw,56px)] leading-[1.1] tracking-[-0.025em] [text-wrap:balance] max-w-[12em] mx-auto">
+          <h2 className="text-navy font-medium text-[clamp(28px,3.8vw,50px)] leading-[1.15] tracking-[-0.025em] [text-wrap:balance] max-w-[14em] mx-auto">
             Find a spot, or share yours.
           </h2>
-          <p className="mt-5 text-[#B9C6DA] text-[18px] leading-[1.5] max-w-[28em] mx-auto text-center">
+          <p className="mt-4 text-[#566070] text-[17px] sm:text-[18px] leading-[1.5] max-w-[28em] mx-auto text-center">
             Join ParkShare and make the most of the parking your neighbourhood
             already has.
           </p>
-          <div className="mt-9 w-full">
+          <div className="mt-8 w-full">
             <CtaPair size="lg" align="center" stackBelow={480} />
           </div>
         </div>
       </section>
+
+      {/* Spacer 1:1 like other sections */}
+      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
 
       {/* Footer */}
       <Footer />
