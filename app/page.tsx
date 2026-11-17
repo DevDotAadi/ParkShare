@@ -36,10 +36,10 @@ export default function Home() {
       {/* 4th Section: Safety & Trust (rebuilt framed panel) */}
       <Safety />
 
-      {/* Spacer 1:1 like webild.io */}
-      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
+      {/* Spacer before CTA */}
+      <div className="h-[100px] md:h-[120px]" aria-hidden="true" />
 
-      {/* Final CTA Section: Clean white section matching other sections, no divider lines */}
+      {/* Final CTA Section: Clean pure white background, no blue bg, no divider line */}
       <section
         id="cta"
         className="w-full bg-white text-navy scroll-mt-[96px]"
@@ -58,10 +58,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Spacer 1:1 like other sections */}
-      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
+      {/* Spacer before footer */}
+      <div className="h-[80px] md:h-[100px]" aria-hidden="true" />
 
-      {/* Footer */}
+      {/* Glassmorphic White Footer */}
       <Footer />
     </main>
   );
