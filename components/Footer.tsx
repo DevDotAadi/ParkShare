@@ -9,10 +9,10 @@ export default function Footer() {
   return (
     <footer className="w-full bg-white border-t border-[#10294B]/[0.08] pt-16 pb-12 sm:pt-20 sm:pb-16 text-navy relative overflow-hidden">
       <div className="wrap flex flex-col relative z-10">
-        {/* Top Area: Brand & Link Column */}
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-10 sm:gap-16 w-full">
+        {/* Top Area: Brand & Categorized Links */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 w-full">
           {/* Brand Column */}
-          <div className="flex flex-col items-start gap-4 max-w-sm w-full">
+          <div className="flex flex-col items-start gap-4 max-w-xs w-full shrink-0">
             <Link
               href="#top"
               className="inline-block transition-opacity hover:opacity-85"
@@ -27,43 +27,124 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-[15px] leading-relaxed text-[#566070] font-normal max-w-xs">
+            <p className="text-[15px] leading-relaxed text-[#566070] font-normal">
               Parking shared between neighbours, homes and businesses.
             </p>
           </div>
 
-          {/* Link Column: Clean links for existing sections in navbar order */}
-          <nav aria-label="Footer" className="flex flex-col gap-3">
-            <a
-              href="#spaces"
-              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
-            >
-              Spaces
-            </a>
-            <a
-              href="#how"
-              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
-            >
-              Working
-            </a>
-            <a
-              href="#pricing"
-              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
-            >
-              Pricing
-            </a>
-            <a
-              href="#trust"
-              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
-            >
-              Safety
-            </a>
-            <a
-              href="#faq"
-              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
-            >
-              FAQ
-            </a>
+          {/* Categorized Link Columns */}
+          <nav aria-label="Footer navigation" className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 w-full lg:w-auto">
+            {/* Category 1: Explore */}
+            <div className="flex flex-col items-start gap-3">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
+                Explore
+              </span>
+              <a
+                href="#spaces"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Spaces
+              </a>
+              <a
+                href="#how"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Working
+              </a>
+              <a
+                href="#pricing"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Pricing
+              </a>
+              <a
+                href="#trust"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Safety
+              </a>
+              <a
+                href="#faq"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                FAQ
+              </a>
+            </div>
+
+            {/* Category 2: Drivers */}
+            <div className="flex flex-col items-start gap-3">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
+                Drivers
+              </span>
+              <a
+                href="#spaces"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Find parking
+              </a>
+              <a
+                href="#pricing"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Hourly rates
+              </a>
+              <a
+                href="#pricing"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Monthly pass
+              </a>
+            </div>
+
+            {/* Category 3: Space Owners */}
+            <div className="flex flex-col items-start gap-3">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
+                Owners
+              </span>
+              <a
+                href="#pricing"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                List a spot
+              </a>
+              <a
+                href="#pricing"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Host earnings
+              </a>
+              <a
+                href="#how"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Hosting guide
+              </a>
+            </div>
+
+            {/* Category 4: Safety & Trust */}
+            <div className="flex flex-col items-start gap-3">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
+                Safety
+              </span>
+              <a
+                href="#trust"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Verified members
+              </a>
+              <a
+                href="#trust"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                Secure payments
+              </a>
+              <a
+                href="#trust"
+                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
+              >
+                In-app chat
+              </a>
+            </div>
           </nav>
         </div>
 
