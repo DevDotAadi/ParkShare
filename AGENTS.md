@@ -19,38 +19,37 @@ Every call-to-action button across the ParkShare application must use the shared
      - **Size "md" (44px tall)**: Height 44px, padding-left 20px (`pl-5`), padding-right 6px (`pr-1.5`). Used for Navbar and mobile menu drawer.
 
 3. **Surface & Physical Depth (Inner Lighting Only)**:
-   - Background: `#FFFFFF` with a vertical linear gradient from `#FFFFFF` at the top to `#E8EDF5` (or `#E2E8F2`) at the bottom.
-   - Edge: `1px solid rgba(16, 41, 75, 0.16)` on top, left and right, and `border-bottom-color: rgba(16, 41, 75, 0.28)`.
+   - Background: `#FFFFFF` with a subtle vertical linear gradient from `#FFFFFF` at the top to `#F8FAFC` at the bottom (pure crisp white key appearance, never grey).
+   - Edge: `1px solid rgba(16, 41, 75, 0.14)` on top, left and right, and `border-bottom-color: rgba(16, 41, 75, 0.22)`.
    - Inset box-shadow stack only (no outer drop shadows, no halos, nothing outside button bounds):
      ```css
      box-shadow:
        inset 0 1px 0 #FFFFFF,
-       inset 0 0 0 1px rgba(255, 255, 255, 0.6),
-       inset 0 -2px 0 rgba(16, 41, 75, 0.08);
+       inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+       inset 0 -1px 0 rgba(16, 41, 75, 0.05);
      ```
    - Must work as a raised physical white key on all backgrounds through inner lighting and bottom edge alone.
 
 4. **Arrow Chip**:
    - Shape: Circle on the right, vertically centered.
    - Dimensions: `36px` diameter for size "lg", `32px` diameter for size "md".
-   - Icon: Lucide `ArrowUpRight` (`18px` for "lg", `16px` for "md"), stroke width `2`.
-   - Chip surface: `#EDF1F7` with vertical gradient from `rgba(16, 41, 75, 0.07)` at the top to `rgba(255, 255, 255, 0.6)` at the bottom.
-   - Chip shadows (inset only): `inset 0 1px 2px rgba(16, 41, 75, 0.20), inset 0 -1px 0 rgba(255, 255, 255, 0.9)`.
+   - Icon: Lucide `ArrowUpRight` (`18px` for "lg", `16px` for "md"), stroke width `2`, navy `#10294B`.
+   - Chip surface: `#EEF2F7` with subtle vertical gradient from `rgba(16, 41, 75, 0.04)` at the top to `rgba(255, 255, 255, 0.75)` at the bottom.
+   - Chip shadows (inset only): `inset 0 1px 2px rgba(16, 41, 75, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.9)`.
    - Chip edge: `1px solid rgba(16, 41, 75, 0.08)`. Reads as slightly pressed into the button.
 
 5. **Interaction States**:
    - **Hover**:
-     - Body background-color changes to `#EEF4FF` and the gradient stays.
-     - Arrow chip turns cobalt `#2864E8` with a white arrow `#FFFFFF` (`color: #FFFFFF`).
+     - Body background-color stays `#FFFFFF` (border-color enhances slightly to `rgba(16, 41, 75, 0.24)`).
+     - Arrow chip transitions subtly to cool grey `#E2E8F0` (border `rgba(16, 41, 75, 0.14)`), arrow stays navy `#10294B`.
+     - Absolutely NO blue highlight, NO cobalt chip, NO color inversion.
      - Transition only `background-color`, `color`, `border-color`, and `box-shadow` over `150ms ease-in-out`.
      - Pointer cursor is active.
    - **Active (pressed)**:
-     - Replace the bottom shade band with `inset 0 2px 3px rgba(16, 41, 75, 0.20)`, same border, no movement.
-     - Chip becomes `#1E52C8` with `inset 0 1px 3px rgba(0, 0, 0, 0.28)`.
+     - Replace the bottom shade band with `inset 0 1px 3px rgba(16, 41, 75, 0.16)`, same border, no movement.
+     - Chip becomes `#DCE3ED` with `inset 0 1px 3px rgba(16, 41, 75, 0.20)`. No blue.
    - **Focus-Visible**:
-     - Two-tone ring: `0 0 0 3px #FFFFFF, 0 0 0 6px #2864E8` added only during keyboard navigation.
-   - **Focus-Visible**:
-     - Two-tone ring: `0 0 0 3px #FFFFFF, 0 0 0 6px #2864E8` added to the existing shadow stack.
+     - Clean focus ring added to the existing shadow stack only during keyboard navigation.
 
 6. **Responsive Stacking**:
    - Under `480px`, groups of two buttons stack vertically at full width (`w-full max-w-[320px]`) with a `12px` gap.
