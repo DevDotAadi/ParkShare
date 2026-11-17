@@ -33,13 +33,13 @@ export default function Home() {
       {/* Final CTA Section */}
       <section
         id="cta"
-        className="py-[100px] md:py-[140px] bg-band text-white text-center"
+        className="py-[100px] md:py-[140px] bg-white text-navy text-center border-t border-[#10294B]/[0.08]"
       >
         <div className="wrap max-w-3xl mx-auto">
-          <h2 className="font-medium text-white text-[clamp(32px,4.2vw,52px)] leading-[1.08] tracking-[-0.025em] mb-4">
+          <h2 className="font-medium text-navy text-[clamp(32px,4.2vw,52px)] leading-[1.08] tracking-[-0.025em] mb-4">
             Find a spot, or share yours.
           </h2>
-          <p className="text-bandmuted text-base sm:text-lg max-w-[30em] mx-auto mb-9 leading-relaxed">
+          <p className="text-[#566070] text-base sm:text-lg max-w-[30em] mx-auto mb-9 leading-relaxed">
             Join ParkShare and make the most of the parking your neighbourhood
             already has.
           </p>
