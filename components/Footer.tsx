@@ -64,101 +64,33 @@ export default function Footer() {
             </form>
           </div>
 
-          {/* Link Columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 w-full lg:w-auto">
-            {/* Column 1: Product */}
-            <div className="flex flex-col items-start gap-3">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
-                Product
-              </span>
-              <a
-                href="#spaces"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Find parking
-              </a>
-              <a
-                href="#pricing"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Pricing
-              </a>
-              <a
-                href="#how"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                How it works
-              </a>
-              <a
-                href="#pricing"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                List a spot
-              </a>
-            </div>
-
-            {/* Column 2: Company */}
-            <div className="flex flex-col items-start gap-3">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
-                Company
-              </span>
-              <a
-                href="#pricing"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                For space owners
-              </a>
-              <a
-                href="#pricing"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Earnings calculator
-              </a>
-              <a
-                href="#trust"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Safety &amp; trust
-              </a>
-              <a
-                href="#cta"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Get started
-              </a>
-            </div>
-
-            {/* Column 3: Safety */}
-            <div className="flex flex-col items-start gap-3">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">
-                Safety
-              </span>
-              <a
-                href="#trust"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Verified members
-              </a>
-              <a
-                href="#trust"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Secure payments
-              </a>
-              <a
-                href="#trust"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                In-app messaging
-              </a>
-              <a
-                href="#trust"
-                className="text-[15px] text-navy/75 hover:text-navy transition-colors duration-150"
-              >
-                Help &amp; FAQs
-              </a>
-            </div>
-          </div>
+          {/* Link Column: Clean links for existing sections in navbar order, no fake pages */}
+          <nav aria-label="Footer" className="flex flex-col gap-3">
+            <a
+              href="#spaces"
+              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
+            >
+              Spaces
+            </a>
+            <a
+              href="#how"
+              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
+            >
+              Working
+            </a>
+            <a
+              href="#pricing"
+              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
+            >
+              Pricing
+            </a>
+            <a
+              href="#trust"
+              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
+            >
+              Safety
+            </a>
+          </nav>
         </div>
 
         {/* Full-width Engraved Glass Divider */}
@@ -167,10 +99,11 @@ export default function Footer() {
           <div className="w-full h-px bg-white" />
         </div>
 
+        {/* TODO before launch: add Privacy Policy and Terms pages and link them here, and add real contact and social links when they exist. */}
         {/* Bottom Bar: Copyright + Glassmorphic Social Buttons */}
         <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6 w-full">
           <p className="text-[14px] text-[#566070] font-normal text-center sm:text-left">
-            &copy; 2026 ParkShare. All rights reserved.
+            &copy; 2026 ParkShare
           </p>
 
           {/* Glassmorphic Social Icons */}
@@ -203,7 +136,7 @@ export default function Footer() {
               <Linkedin className="w-4 h-4 stroke-[1.8]" />
             </a>
             <a
-              href="mailto:contact@parkshare.com"
+              href="#top"
               aria-label="Email"
               className="w-10 h-10 rounded-full bg-[#F4F7FB]/80 backdrop-blur-sm border border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] flex items-center justify-center text-navy hover:bg-white hover:border-[#10294B]/20 hover:shadow-[0_2px_4px_rgba(16,41,75,0.08)] transition-all duration-150"
             >

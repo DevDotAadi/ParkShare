@@ -48,7 +48,7 @@ export default function Home() {
           <h2 className="text-navy font-medium text-[clamp(28px,3.8vw,50px)] leading-[1.15] tracking-[-0.025em] [text-wrap:balance] max-w-[14em] mx-auto">
             Find a spot, or share yours.
           </h2>
-          <p className="mt-4 text-[#566070] text-[17px] sm:text-[18px] leading-[1.5] max-w-[28em] mx-auto text-center">
+          <p className="mt-4 text-[#566070] text-[17px] sm:text-[18px] leading-[1.5] max-w-none mx-auto text-center whitespace-normal sm:whitespace-nowrap">
             Join ParkShare and make the most of the parking your neighbourhood
             already has.
           </p>
