@@ -117,7 +117,7 @@ export default function PricingPlans() {
           >
             {/* Card 1: Pay as you go (Solid White Card) */}
             <div
-              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-6 min-[640px]:p-8 flex flex-col justify-between"
+              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-5 min-[400px]:p-6 min-[640px]:p-8 flex flex-col justify-between"
               style={{
                 boxShadow:
                   "inset 0 1px 0 #FFFFFF, 0 1px 2px rgba(16, 41, 75, 0.06), 0 8px 16px -12px rgba(16, 41, 75, 0.18)",
@@ -125,11 +125,11 @@ export default function PricingPlans() {
             >
               <div className="flex flex-col flex-grow">
                 {/* Title */}
-                <h3 className="text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
+                <h3 className="text-[22px] min-[380px]:text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
                   {driverPayAsYouGo.title}
                 </h3>
                 {/* Descriptor */}
-                <p className="mt-2 text-[16px] leading-[1.45] text-muted line-clamp-2">
+                <p className="mt-2 text-[15px] min-[380px]:text-[16px] leading-[1.45] text-muted line-clamp-2">
                   {driverPayAsYouGo.descriptor}
                 </p>
 
@@ -139,7 +139,7 @@ export default function PricingPlans() {
                     <span className="text-[16px] font-normal text-muted leading-none">
                       {driverPayAsYouGo.fromPrefix}
                     </span>
-                    <span className="font-bold text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
+                    <span className="font-bold text-[44px] min-[380px]:text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
                       {driverPayAsYouGo.price}
                     </span>
                     <span className="text-[18px] font-normal text-muted leading-none">
@@ -190,7 +190,7 @@ export default function PricingPlans() {
 
             {/* Card 2: Monthly pass (Solid White Card - NOT blue) */}
             <div
-              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-6 min-[640px]:p-8 flex flex-col justify-between"
+              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-5 min-[400px]:p-6 min-[640px]:p-8 flex flex-col justify-between"
               style={{
                 boxShadow:
                   "inset 0 1px 0 #FFFFFF, 0 1px 2px rgba(16, 41, 75, 0.06), 0 8px 16px -12px rgba(16, 41, 75, 0.18)",
@@ -198,18 +198,18 @@ export default function PricingPlans() {
             >
               <div className="flex flex-col flex-grow">
                 {/* Title */}
-                <h3 className="text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
+                <h3 className="text-[22px] min-[380px]:text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
                   {driverMonthlyPass.title}
                 </h3>
                 {/* Descriptor */}
-                <p className="mt-2 text-[16px] leading-[1.45] text-muted line-clamp-2">
+                <p className="mt-2 text-[15px] min-[380px]:text-[16px] leading-[1.45] text-muted line-clamp-2">
                   {driverMonthlyPass.descriptor}
                 </p>
 
                 {/* Price block */}
                 <div className="mt-6 flex flex-col items-start">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-bold text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
+                    <span className="font-bold text-[44px] min-[380px]:text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
                       {driverMonthlyPass.price}
                     </span>
                     <span className="text-[18px] font-normal text-muted leading-none">
@@ -272,7 +272,7 @@ export default function PricingPlans() {
             className="w-full animate-hero-block"
           >
             <div
-              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-6 min-[640px]:p-8 min-[900px]:p-10"
+              className="w-full rounded-[12px] min-[640px]:rounded-[14px] bg-white border border-[#10294B]/10 p-5 min-[400px]:p-6 min-[640px]:p-8 min-[900px]:p-10"
               style={{
                 boxShadow:
                   "inset 0 1px 0 #FFFFFF, 0 1px 2px rgba(16, 41, 75, 0.06), 0 8px 16px -12px rgba(16, 41, 75, 0.18)",
@@ -282,17 +282,17 @@ export default function PricingPlans() {
               <div className="grid grid-cols-1 min-[900px]:grid-cols-[1.15fr_auto_1fr] min-[900px]:gap-12 items-center">
                 {/* Left Column: Title, Price, Explanations & Button */}
                 <div className="flex flex-col items-start text-left">
-                  <h3 className="text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
+                  <h3 className="text-[22px] min-[380px]:text-[24px] font-medium leading-[1.2] tracking-[-0.01em] text-navy">
                     {ownerListing.title}
                   </h3>
-                  <p className="mt-2 text-[16px] leading-[1.45] text-muted max-w-[28em]">
+                  <p className="mt-2 text-[15px] min-[380px]:text-[16px] leading-[1.45] text-muted max-w-[28em]">
                     {ownerListing.descriptor}
                   </p>
 
                   {/* Price block */}
                   <div className="mt-6 flex flex-col items-start">
                     <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
+                      <span className="font-bold text-[44px] min-[380px]:text-[56px] leading-none tracking-[-0.03em] tabular-nums text-navy">
                         {ownerListing.price}
                       </span>
                       <span className="text-[18px] font-normal text-muted leading-none">

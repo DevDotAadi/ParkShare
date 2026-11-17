@@ -61,27 +61,27 @@ export default function HowSteps() {
       {steps.map((step) => (
         <div
           key={step.number}
-          className="w-full py-6 sm:py-7 lg:py-8 flex items-center gap-5 sm:gap-8 lg:gap-11"
+          className="w-full py-5 sm:py-7 lg:py-8 flex items-center gap-3.5 min-[380px]:gap-5 sm:gap-8 lg:gap-11"
         >
           {/* 1. Step Number (01, 02, 03) */}
-          <div className="shrink-0 flex items-center justify-start min-w-[52px] sm:min-w-[66px] lg:min-w-[76px]">
-            <span className="font-normal text-[44px] sm:text-[56px] lg:text-[66px] leading-none tabular-nums tracking-tight text-navy select-none">
+          <div className="shrink-0 flex items-center justify-start min-w-[44px] min-[380px]:min-w-[52px] sm:min-w-[66px] lg:min-w-[76px]">
+            <span className="font-normal text-[36px] min-[380px]:text-[44px] sm:text-[56px] lg:text-[66px] leading-none tabular-nums tracking-tight text-navy select-none">
               {step.number}
             </span>
           </div>
 
           {/* 2. Solid Gray Vertical Divider Line */}
           <div
-            className="shrink-0 w-[1.5px] sm:w-[2px] h-[50px] sm:h-[60px] bg-[#10294B]/[0.15] rounded-full"
+            className="shrink-0 w-[1.5px] sm:w-[2px] h-[42px] sm:h-[60px] bg-[#10294B]/[0.15] rounded-full"
             aria-hidden="true"
           />
 
           {/* 3. Text Content: Title + Description */}
           <div className="flex-1 flex flex-col justify-center min-w-0">
-            <h3 className="text-[20px] sm:text-[23px] lg:text-[25px] font-medium leading-[1.25] tracking-[-0.015em] text-navy">
+            <h3 className="text-[18px] min-[380px]:text-[20px] sm:text-[23px] lg:text-[25px] font-medium leading-[1.25] tracking-[-0.015em] text-navy">
               {step.title}
             </h3>
-            <p className="mt-1.5 sm:mt-2 text-[15px] sm:text-[16px] lg:text-[16.5px] leading-[1.55] text-muted max-w-[42em]">
+            <p className="mt-1 sm:mt-2 text-[14px] min-[380px]:text-[15px] sm:text-[16px] lg:text-[16.5px] leading-[1.55] text-muted max-w-[42em]">
               {step.description}
             </p>
           </div>

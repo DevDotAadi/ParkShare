@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       aria-label="ParkShare hero"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#1a86f8] from-50% via-[#1a86f8] via-70% to-white flex flex-col min-h-[100svh] min-h-[700px] max-h-[1080px] h-[100svh]"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#1a86f8] from-50% via-[#1a86f8] via-70% to-white flex flex-col min-h-[100svh] sm:min-h-[700px] max-h-[1080px] h-[100svh]"
     >
       {/* Navbar positioned inside Hero at the top */}
       <Header />
@@ -44,7 +44,7 @@ export default function Hero() {
       />
 
       {/* Hero Content Block: Centered perfectly both horizontally and vertically */}
-      <div className="wrap relative z-20 w-full flex-1 flex flex-col items-center justify-center text-center pt-[80px] pb-[80px]">
+      <div className="wrap relative z-20 w-full flex-1 flex flex-col items-center justify-center text-center pt-[76px] pb-[44px] sm:pt-[80px] sm:pb-[80px]">
         <div className="w-full flex flex-col items-center justify-center animate-hero-block">
           {/* Headline (h1): Single line on desktop, clean balanced wrap on mobile */}
           <h1
@@ -59,7 +59,7 @@ export default function Hero() {
           </h1>
 
           {/* Subheading: Single connected descriptive line */}
-          <p className="mt-5 sm:mt-6 text-white text-center font-normal text-[15px] sm:text-[17px] md:text-[19px] leading-[1.45] max-w-none mx-auto text-white/95 sm:whitespace-nowrap">
+          <p className="mt-5 sm:mt-6 text-white text-center font-normal text-[15px] sm:text-[17px] md:text-[19px] leading-[1.45] max-w-none mx-auto text-white/95 sm:whitespace-nowrap [text-wrap:balance] px-4">
             Book a nearby driveway, basement or office lot in minutes, or earn from the space you&apos;re not using.
           </p>
 

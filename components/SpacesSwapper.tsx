@@ -190,7 +190,7 @@ export default function SpacesSwapper() {
         data-active-index={activeIndex}
         className="w-full rounded-[20px] md:rounded-[24px] p-2.5 bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)] overflow-hidden aspect-square md:aspect-auto md:h-full flex items-center justify-center"
       >
-        <div className="relative w-full h-full min-h-[340px] md:min-h-0 rounded-[12px] md:rounded-[14px] overflow-hidden bg-ice">
+        <div className="relative w-full h-full min-h-[260px] sm:min-h-[320px] md:min-h-0 rounded-[12px] md:rounded-[14px] overflow-hidden bg-ice">
           {spacesItems.map((item, index) => {
             const isActive = index === activeIndex;
             return (

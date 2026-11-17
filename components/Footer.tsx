@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Categorized Link Columns */}
-          <nav aria-label="Footer navigation" className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 w-full lg:w-auto">
+          <nav aria-label="Footer navigation" className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 sm:gap-10 lg:gap-12 w-full lg:w-auto">
             {/* Category 1: Explore */}
             <div className="flex flex-col items-start gap-3">
               <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#566070] mb-1">

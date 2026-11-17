@@ -97,7 +97,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-nav-dialog"
-          className="fixed inset-0 bg-[#10294B] text-white z-50 flex flex-col p-6 min-[900px]:hidden overflow-y-auto animate-hero-block"
+          className="fixed inset-0 bg-[#10294B] text-white z-50 flex flex-col px-6 pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] min-[900px]:hidden overflow-y-auto animate-hero-block"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
