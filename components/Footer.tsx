@@ -7,8 +7,14 @@ import { Twitter, Instagram, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-[#10294B]/[0.08] pt-16 pb-12 sm:pt-20 sm:pb-16 text-navy relative overflow-hidden">
+    <footer className="w-full bg-white pb-12 sm:pb-16 text-navy relative overflow-hidden">
       <div className="wrap flex flex-col relative z-10">
+        {/* Contained Top Divider Line (matches the one above copyright) */}
+        <div className="w-full mb-12 sm:mb-16 flex flex-col" aria-hidden="true">
+          <div className="w-full h-px bg-[#10294B]/[0.08]" />
+          <div className="w-full h-px bg-white" />
+        </div>
+
         {/* Top Area: Brand & Categorized Links */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 w-full">
           {/* Brand Column */}
