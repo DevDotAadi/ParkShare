@@ -1,18 +1,32 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+export const viewport: Viewport = {
+  themeColor: "#10294B",
+};
+
 export const metadata: Metadata = {
-  title: "ParkShare – Share space. Park easy.",
-  description:
-    "Book a nearby driveway, basement or office lot in minutes, or earn from the space you're not using.",
-  openGraph: {
-    title: "ParkShare – Share space. Park easy.",
-    description:
-      "Book a nearby driveway, basement or office lot in minutes, or earn from the space you're not using.",
-    type: "website",
+  // TODO: Replace with real production domain before launch
+  metadataBase: new URL("https://parkshare.example"),
+  title: {
+    default: "ParkShare – Book or share a parking space",
+    template: "%s | ParkShare",
   },
-  icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232864E8'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='800' font-size='20' text-anchor='middle' fill='white'%3EP%3C/text%3E%3C/svg%3E",
+  description:
+    "Book a nearby driveway, basement or office lot in minutes, or earn from the parking space you're not using.",
+  openGraph: {
+    type: "website",
+    siteName: "ParkShare",
+    title: "ParkShare – Book or share a parking space",
+    description:
+      "Book a nearby driveway, basement or office lot in minutes, or earn from the parking space you're not using.",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ParkShare – Book or share a parking space",
+    description:
+      "Book a nearby driveway, basement or office lot in minutes, or earn from the parking space you're not using.",
   },
 };
 
