@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Plus, X } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useAccordionMachine } from "@/lib/state/useAccordionMachine";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
@@ -100,29 +100,23 @@ export default function Faq() {
                     {item.question}
                   </span>
 
-                  {/* Skeuomorphic Circular Indicator Chip (webild.io style: physical lighting, continuous icon, no gap) */}
+                  {/* Skeuomorphic Circular Indicator Chip (webild.io style: rotating plus-to-cross, physical lighting, seamless) */}
                   <span
                     data-state={itemOpen ? "open" : "closed"}
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ease-out ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       itemOpen
-                        ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.15] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
+                        ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.16] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
                         : "bg-gradient-to-b from-[#FFFFFF] to-[#F2F5F9] border-[#10294B]/[0.12] shadow-[inset_0_1px_0_#FFFFFF,0_1px_2px_rgba(16,41,75,0.06)] hover:border-[#10294B]/[0.20]"
                     }`}
                     aria-hidden="true"
                   >
-                    {itemOpen ? (
-                      <X
-                        size={17}
-                        strokeWidth={2.4}
-                        className="text-navy"
-                      />
-                    ) : (
-                      <Plus
-                        size={17}
-                        strokeWidth={2.4}
-                        className="text-navy"
-                      />
-                    )}
+                    <Plus
+                      size={18}
+                      strokeWidth={2.2}
+                      className={`text-navy transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        itemOpen ? "rotate-45" : "rotate-0"
+                      }`}
+                    />
                   </span>
                 </button>
 
