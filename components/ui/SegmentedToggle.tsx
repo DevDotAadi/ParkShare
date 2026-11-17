@@ -83,7 +83,7 @@ export default function SegmentedToggle<T extends string = string>({
         tabIndex={activeIndex === 0 ? 0 : -1}
         onClick={() => onChange(options[0].value)}
         onKeyDown={(e) => handleKeyDown(e, 0)}
-        className="relative z-10 h-[44px] px-6 rounded-full text-[15px] font-medium transition-colors duration-150 cursor-pointer focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-cobalt focus-visible:outline-offset-[3px] flex items-center justify-center whitespace-nowrap min-w-[150px] sm:min-w-[172px] bg-transparent border-none"
+        className="relative z-10 h-[44px] px-3.5 min-[380px]:px-6 rounded-full text-[14px] min-[380px]:text-[15px] font-medium transition-colors duration-150 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-1 flex items-center justify-center whitespace-nowrap min-w-[130px] min-[380px]:min-w-[150px] sm:min-w-[172px] bg-transparent border-none"
       >
         <span
           className={`transition-colors duration-150 ${
@@ -105,7 +105,7 @@ export default function SegmentedToggle<T extends string = string>({
         tabIndex={activeIndex === 1 ? 0 : -1}
         onClick={() => onChange(options[1].value)}
         onKeyDown={(e) => handleKeyDown(e, 1)}
-        className="relative z-10 h-[44px] px-6 rounded-full text-[15px] font-medium transition-colors duration-150 cursor-pointer focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-cobalt focus-visible:outline-offset-[3px] flex items-center justify-center whitespace-nowrap min-w-[150px] sm:min-w-[172px] bg-transparent border-none"
+        className="relative z-10 h-[44px] px-3.5 min-[380px]:px-6 rounded-full text-[14px] min-[380px]:text-[15px] font-medium transition-colors duration-150 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-1 flex items-center justify-center whitespace-nowrap min-w-[130px] min-[380px]:min-w-[150px] sm:min-w-[172px] bg-transparent border-none"
       >
         <span
           className={`transition-colors duration-150 ${

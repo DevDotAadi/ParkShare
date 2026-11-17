@@ -104,7 +104,7 @@ export default function HowSteps() {
         <p className="text-cobalt text-[20px] sm:text-[22px] font-medium leading-[1.2] tracking-normal normal-case text-center">
           How it works
         </p>
-        <h2 className="mt-3.5 sm:mt-4 font-medium text-navy text-[clamp(24px,3.6vw,50px)] leading-[1.15] tracking-[-0.025em] text-center whitespace-nowrap">
+        <h2 className="mt-3.5 sm:mt-4 font-medium text-navy text-[clamp(24px,3.6vw,50px)] leading-[1.15] tracking-[-0.025em] text-center [text-wrap:balance] min-[540px]:whitespace-nowrap">
           Three steps, whichever side you&apos;re on.
         </h2>
       </div>

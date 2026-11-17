@@ -51,7 +51,7 @@ export default function Header() {
         <div className="flex items-center justify-start">
           <Link
             href="#top"
-            className="flex items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+            className="flex items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/40"
             aria-label="ParkShare home"
           >
             <Image

@@ -64,44 +64,35 @@ export default function Faq() {
           </h2>
         </div>
 
-        {/* Skeuomorphic Accordion Stack: gap matched to buttons/elements rhythm in sections above (mt-9 sm:mt-11) */}
-        <div className="mt-9 sm:mt-11 max-w-[840px] mx-auto flex flex-col gap-3 sm:gap-3.5">
+        {/* Skeuomorphic Accordion Stack: stretched to full width of .wrap container */}
+        <div className="mt-9 sm:mt-11 w-full flex flex-col gap-3 sm:gap-3.5">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
 
             return (
               <div
                 key={idx}
-                className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-200 ${
-                  isOpen
-                    ? "border-[#10294B]/[0.16] shadow-[0_4px_16px_-4px_rgba(16,41,75,0.06),inset_0_1px_0_#FFFFFF]"
-                    : "border-[#10294B]/[0.08] shadow-[0_1px_3px_rgba(16,41,75,0.03),inset_0_1px_0_#FFFFFF] hover:border-[#10294B]/[0.14]"
-                }`}
+                className="w-full rounded-[16px] sm:rounded-[20px] bg-white border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.03),inset_0_1px_0_#FFFFFF] transition-colors duration-150"
               >
                 {/* Accordion Trigger Button */}
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full px-6 py-5 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-2"
+                  className="w-full px-5 py-4 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-3.5 sm:gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-2"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[17px] sm:text-[19px] font-medium text-navy leading-[1.35]">
+                  <span className="text-[16px] sm:text-[19px] font-medium text-navy leading-[1.35]">
                     {item.question}
                   </span>
 
-                  {/* Pure White Circular Indicator Chip: Plus that rotates 45deg into a Cross */}
+                  {/* Pure White Circular Indicator Chip: Plus rotates 45deg to Cross with zero black border or glow */}
                   <span
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border bg-white transition-all duration-200 ${
-                      isOpen
-                        ? "border-[#10294B]/[0.18] shadow-[0_1px_2px_rgba(16,41,75,0.06)]"
-                        : "border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] hover:border-[#10294B]/[0.16]"
-                    }`}
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border border-[#10294B]/[0.10] bg-white shadow-[0_1px_2px_rgba(16,41,75,0.04)] transition-colors duration-150"
                     aria-hidden="true"
                   >
                     <Plus
-                      size={18}
                       strokeWidth={2}
-                      className={`text-navy transition-transform duration-200 ease-in-out ${
+                      className={`text-navy w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-200 ease-in-out ${
                         isOpen ? "rotate-45" : "rotate-0"
                       }`}
                     />
@@ -115,7 +106,7 @@ export default function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-5 pt-0 sm:px-7 sm:pb-6 text-[15px] sm:text-[16px] leading-[1.6] text-[#566070] font-normal">
+                    <p className="px-5 pb-4 pt-0 sm:px-7 sm:pb-6 text-[14.5px] sm:text-[16px] leading-[1.6] text-[#566070] font-normal">
                       {item.answer}
                     </p>
                   </div>

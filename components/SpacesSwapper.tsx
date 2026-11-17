@@ -173,7 +173,7 @@ export default function SpacesSwapper() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => handleSelectTab(index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="w-full text-left bg-transparent border-none p-0 cursor-pointer focus-visible:outline focus-visible:outline-[2px] focus-visible:outline-cobalt focus-visible:outline-offset-4 block select-none"
+                  className="w-full text-left bg-transparent border-none p-0 cursor-pointer focus-visible:outline focus-visible:outline-[2px] focus-visible:outline-navy/20 focus-visible:outline-offset-4 block select-none"
                 >
                   <div
                     className={`flex items-center justify-between gap-4 pt-4 transition-[padding] duration-300 ease-out ${

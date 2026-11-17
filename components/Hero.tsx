@@ -46,12 +46,12 @@ export default function Hero() {
       {/* Hero Content Block: Centered perfectly both horizontally and vertically */}
       <div className="wrap relative z-20 w-full flex-1 flex flex-col items-center justify-center text-center pt-[80px] pb-[80px]">
         <div className="w-full flex flex-col items-center justify-center animate-hero-block">
-          {/* Headline (h1): Single line, descriptive (6-8 words) */}
+          {/* Headline (h1): Single line on desktop, clean balanced wrap on mobile */}
           <h1
-            className="text-white text-center font-medium whitespace-nowrap"
+            className="text-white text-center font-medium [text-wrap:balance] min-[540px]:whitespace-nowrap px-4"
             style={{
               fontSize: "clamp(22px, min(3.8vw, 6.2svh), 56px)",
-              lineHeight: 1.1,
+              lineHeight: 1.15,
               letterSpacing: "-0.035em",
             }}
           >
