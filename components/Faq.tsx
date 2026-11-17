@@ -64,8 +64,8 @@ export default function Faq() {
           </h2>
         </div>
 
-        {/* Skeuomorphic Accordion Stack (webild.io style) */}
-        <div className="mt-12 sm:mt-14 max-w-[840px] mx-auto flex flex-col gap-3 sm:gap-3.5">
+        {/* Skeuomorphic Accordion Stack: gap matched to buttons/elements rhythm in sections above (mt-9 sm:mt-11) */}
+        <div className="mt-9 sm:mt-11 max-w-[840px] mx-auto flex flex-col gap-3 sm:gap-3.5">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
 

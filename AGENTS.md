@@ -61,7 +61,7 @@ Every call-to-action button across the ParkShare application must use the shared
 - The global background of the application body and all daytime content sections (Hero blend, Pricing, How it works, Safety) must be **pure white (`#FFFFFF`)**.
 - The beige/grey paper color (`#F5F3ED`) is completely forbidden across the entire site. All gaps and spacers between sections must show clean pure white.
 - Header: Centered label `"Safety and trust"` (`#2864E8`, 20px/22px, font-medium), `h2` `"Built for trust on both sides of the gate."` (navy `#10294B`, font-medium, `clamp(24px, 3.6vw, 50px)`, text-wrap balance). No sub-paragraph.
-- Framed Panel: Margin top 56px (`mt-14`). Outer frame `rounded-[24px]` (mobile `20px`), padding `10px` (mobile `8px`), background `#EEF3FB`, 1px border `rgba(16,41,75,0.08)`, shadow `0 1px 2px rgba(16,41,75,0.05)`.
+- Framed Panel: Margin top matching above sections rhythm (`mt-9 sm:mt-11`). Outer frame `rounded-[24px]` (mobile `20px`), padding `10px` (mobile `8px`), background `#EEF3FB`, 1px border `rgba(16,41,75,0.08)`, shadow `0 1px 2px rgba(16,41,75,0.05)`.
 - Inside: ONE white card (`rounded-[14px]`, mobile `12px`, overflow hidden, no shadow), containing a 6-cell grid:
   - Desktop (≥900px): 3 columns x 2 rows
   - Tablet (600px - 899px): 2 columns x 3 rows

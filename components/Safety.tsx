@@ -77,8 +77,8 @@ export default function Safety() {
           </h2>
         </div>
 
-        {/* Framed Panel (copies framed-panel language from How it works) */}
-        <div className="mt-14 w-full rounded-[20px] min-[600px]:rounded-[24px] p-2 min-[600px]:p-[10px] bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)]">
+        {/* Framed Panel: gap matched to buttons/elements rhythm in sections above (mt-9 sm:mt-11) */}
+        <div className="mt-9 sm:mt-11 w-full rounded-[20px] min-[600px]:rounded-[24px] p-2 min-[600px]:p-[10px] bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)]">
           {/* Inside: ONE white card containing the 6-cell grid */}
           <div className="w-full rounded-[12px] min-[600px]:rounded-[14px] bg-white overflow-hidden">
             <div className="w-full grid grid-cols-1 min-[600px]:grid-cols-2 min-[900px]:grid-cols-3">
