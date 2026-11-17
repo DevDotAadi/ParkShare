@@ -51,7 +51,7 @@ export const PRICING_DATA = {
       "Payouts straight to your bank account",
       "Drivers are verified before they book",
     ],
-    ctaText: "List your space",
+    ctaText: "List a spot",
     ctaHref: "#cta", // TODO: Connect host registration link
   },
 } as const;
@@ -59,6 +59,17 @@ export const PRICING_DATA = {
 export default function PricingPlans() {
   const [activeTab, setActiveTab] = useState<"drivers" | "owners">("drivers");
   const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === "#owners") {
+        setActiveTab("owners");
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");

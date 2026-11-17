@@ -85,7 +85,7 @@ export default function Header() {
           {/* Desktop single solid pill button "Find parking" */}
           <div className="hidden min-[900px]:block">
             {/* TODO: Connect real app or search link */}
-            <Button href="#pricing" size="md">
+            <Button href="#spaces" size="md">
               Find parking
             </Button>
           </div>
@@ -148,30 +148,23 @@ export default function Header() {
           </nav>
 
           <div className="flex flex-col gap-3 mt-auto pt-6 border-t border-white/10">
-            <Button
-              href="#pricing"
-              size="md"
-              className="w-full justify-between"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              List a spot
-            </Button>
-            <Button
-              href="#how"
-              size="md"
-              className="w-full justify-between"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              See how it works
-            </Button>
             {/* TODO: Connect real app or search link */}
             <Button
-              href="#pricing"
+              href="#spaces"
               size="md"
               className="w-full justify-between"
               onClick={() => setMobileMenuOpen(false)}
             >
               Find parking
+            </Button>
+            {/* TODO: Connect real host listing or signup link */}
+            <Button
+              href="#owners"
+              size="md"
+              className="w-full justify-between"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              List a spot
             </Button>
           </div>
         </div>

@@ -65,19 +65,21 @@ export default function Hero() {
 
           {/* Buttons: Two skeuomorphic white buttons, 52px tall (size="lg"), 12px gap */}
           <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+            {/* TODO: Connect real app or search link */}
+            <Button
+              href="#spaces"
+              size="lg"
+              className="w-full sm:w-auto max-w-[320px] sm:max-w-none justify-between sm:justify-center"
+            >
+              Find parking
+            </Button>
+            {/* TODO: Connect real host listing or signup link */}
             <Button
               href="#owners"
               size="lg"
               className="w-full sm:w-auto max-w-[320px] sm:max-w-none justify-between sm:justify-center"
             >
               List a spot
-            </Button>
-            <Button
-              href="#how"
-              size="lg"
-              className="w-full sm:w-auto max-w-[320px] sm:max-w-none justify-between sm:justify-center"
-            >
-              See how it works
             </Button>
           </div>
         </div>
