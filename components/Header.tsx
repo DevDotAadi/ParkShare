@@ -1,34 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { findParking } from "@/lib/cta";
+import { useNavigationMachine } from "@/lib/state/useNavigationMachine";
 
 export default function Header() {
-  const [isAtTop, setIsAtTop] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Navbar is only visible when scrolled all the way back to the top (<= 20px)
-      setIsAtTop(window.scrollY <= 20);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [mobileMenuOpen]);
+  const {
+    isAtTop,
+    mobileMenuOpen,
+    openMobileMenu,
+    closeMobileMenu,
+    headerAttributes,
+    menuButtonAttributes,
+  } = useNavigationMachine();
 
   const navLinks = [
     { label: "Spaces", href: "#spaces" },
@@ -40,10 +28,12 @@ export default function Header() {
 
   return (
     <header
-      className={`h-[80px] w-full z-50 absolute top-0 left-0 right-0 bg-transparent transition-all duration-300 ease-in-out ${isAtTop
-        ? "opacity-100 visible pointer-events-auto translate-y-0"
-        : "opacity-0 invisible pointer-events-none -translate-y-4"
-        }`}
+      {...headerAttributes}
+      className={`h-[80px] w-full z-50 absolute top-0 left-0 right-0 bg-transparent transition-all duration-300 ease-in-out ${
+        isAtTop
+          ? "opacity-100 visible pointer-events-auto translate-y-0"
+          : "opacity-0 invisible pointer-events-none -translate-y-4"
+      }`}
     >
       {/* 3-Column Grid Container: 1fr auto 1fr mathematically centres the centre column */}
       <div className="wrap h-full grid grid-cols-[1fr_auto_1fr] items-center">
@@ -93,8 +83,9 @@ export default function Header() {
           {/* Under 900px: 44px solid circular menu button */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={openMobileMenu}
             aria-label="Open navigation menu"
+            {...menuButtonAttributes}
             className="min-[900px]:hidden inline-flex items-center justify-center w-[44px] h-[44px] rounded-full bg-white text-[#10294B] hover:bg-white/90 transition-colors duration-200"
           >
             <Menu className="w-5 h-5 stroke-[2.2]" />
@@ -105,15 +96,17 @@ export default function Header() {
       {/* Full-screen Mobile Menu (under 900px) */}
       {mobileMenuOpen && (
         <div
+          id="mobile-nav-dialog"
           className="fixed inset-0 bg-[#10294B] text-white z-50 flex flex-col p-6 min-[900px]:hidden overflow-y-auto animate-hero-block"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
+          data-state="open"
         >
           <div className="flex items-center justify-between pb-6 border-b border-white/10">
             <Link
               href="#top"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="flex items-center"
             >
               <Image
@@ -126,7 +119,7 @@ export default function Header() {
             </Link>
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               aria-label="Close navigation menu"
               className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
             >
@@ -139,7 +132,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={closeMobileMenu}
                 className="text-xl font-medium text-white/90 hover:text-white transition-opacity"
               >
                 {link.label}
@@ -152,7 +145,7 @@ export default function Header() {
               href={findParking.href}
               size="md"
               className="w-full max-w-[320px] justify-between"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               {findParking.label}
             </Button>

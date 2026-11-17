@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SegmentedToggle from "@/components/ui/SegmentedToggle";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 interface StepItem {
   number: string;
@@ -53,15 +54,7 @@ const ownerSteps: StepItem[] = [
 
 export default function HowSteps() {
   const [activeTab, setActiveTab] = useState<"drivers" | "owners">("drivers");
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+  const isReducedMotion = useReducedMotion();
 
   const renderStepsList = (steps: StepItem[]) => (
     <div className="w-full divide-y divide-[#10294B]/[0.1] border-y border-[#10294B]/[0.1]">
@@ -132,12 +125,16 @@ export default function HowSteps() {
       />
 
       {/* 3. FLAT STEPS ON WHITE BACKGROUND */}
-      <div className="mt-9 sm:mt-11 w-full grid grid-cols-1 grid-rows-1 relative">
+      <div
+        data-perspective={activeTab}
+        className="mt-9 sm:mt-11 w-full grid grid-cols-1 grid-rows-1 relative"
+      >
         {/* PANEL 1: FOR DRIVERS */}
         <div
           id="how-panel-drivers"
           role="tabpanel"
           aria-labelledby="how-tab-drivers"
+          data-state={activeTab === "drivers" ? "active" : "inactive"}
           className={`col-start-1 row-start-1 w-full transition-opacity ease-in-out ${
             activeTab === "drivers"
               ? "opacity-100 visible z-10"
@@ -156,6 +153,7 @@ export default function HowSteps() {
           id="how-panel-owners"
           role="tabpanel"
           aria-labelledby="how-tab-owners"
+          data-state={activeTab === "owners" ? "active" : "inactive"}
           className={`col-start-1 row-start-1 w-full transition-opacity ease-in-out ${
             activeTab === "owners"
               ? "opacity-100 visible z-10"

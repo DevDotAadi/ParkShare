@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 export interface ToggleOption<T extends string = string> {
   value: T;
@@ -24,17 +25,9 @@ export default function SegmentedToggle<T extends string = string>({
   ariaLabel = "View selector",
   className = "",
 }: SegmentedToggleProps<T>) {
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const isReducedMotion = useReducedMotion();
   const tab0Ref = useRef<HTMLButtonElement>(null);
   const tab1Ref = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
 
   const activeIndex = options[0].value === value ? 0 : 1;
 
@@ -51,6 +44,14 @@ export default function SegmentedToggle<T extends string = string>({
       onChange(options[prevIndex].value);
       if (prevIndex === 0) tab0Ref.current?.focus();
       else tab1Ref.current?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      onChange(options[0].value);
+      tab0Ref.current?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      onChange(options[1].value);
+      tab1Ref.current?.focus();
     }
   };
 
@@ -58,6 +59,7 @@ export default function SegmentedToggle<T extends string = string>({
     <div
       role="tablist"
       aria-label={ariaLabel}
+      data-active-value={value}
       className={`relative p-1 rounded-full border border-line bg-white inline-grid grid-cols-2 w-full min-[480px]:w-auto shrink-0 select-none ${className}`}
     >
       {/* Sliding Navy Thumb */}
@@ -80,6 +82,7 @@ export default function SegmentedToggle<T extends string = string>({
         role="tab"
         aria-selected={activeIndex === 0}
         aria-controls={options[0].controls}
+        data-state={activeIndex === 0 ? "active" : "inactive"}
         tabIndex={activeIndex === 0 ? 0 : -1}
         onClick={() => onChange(options[0].value)}
         onKeyDown={(e) => handleKeyDown(e, 0)}
@@ -102,6 +105,7 @@ export default function SegmentedToggle<T extends string = string>({
         role="tab"
         aria-selected={activeIndex === 1}
         aria-controls={options[1].controls}
+        data-state={activeIndex === 1 ? "active" : "inactive"}
         tabIndex={activeIndex === 1 ? 0 : -1}
         onClick={() => onChange(options[1].value)}
         onKeyDown={(e) => handleKeyDown(e, 1)}

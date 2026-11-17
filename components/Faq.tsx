@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Plus, X } from "lucide-react";
+import { useAccordionMachine } from "@/lib/state/useAccordionMachine";
 
 interface FaqItem {
   question: string;
@@ -42,11 +43,11 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (idx: number) => {
-    setOpenIndex((current) => (current === idx ? null : idx));
-  };
+  const { isOpen, toggle, triggerRefs, handleKeyDown } = useAccordionMachine({
+    totalItems: FAQ_ITEMS.length,
+    defaultOpenIndex: 0,
+    allowMultiple: false,
+  });
 
   return (
     <section
@@ -67,23 +68,31 @@ export default function Faq() {
         {/* Skeuomorphic Accordion Stack (webild.io style: full wrap width, physical depth) */}
         <div className="mt-9 sm:mt-11 w-full flex flex-col gap-3 sm:gap-3.5">
           {FAQ_ITEMS.map((item, idx) => {
-            const isOpen = openIndex === idx;
+            const itemOpen = isOpen(idx);
 
             return (
               <div
                 key={idx}
+                data-state={itemOpen ? "open" : "closed"}
                 className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-150 ${
-                  isOpen
+                  itemOpen
                     ? "border-[#10294B]/[0.14] shadow-[inset_0_1px_0_#FFFFFF,0_2px_6px_rgba(16,41,75,0.05)]"
                     : "border-[#10294B]/[0.10] shadow-[inset_0_1px_0_#FFFFFF,0_1px_3px_rgba(16,41,75,0.03)] hover:border-[#10294B]/[0.16]"
                 }`}
               >
                 {/* Accordion Trigger Button */}
                 <button
+                  ref={(el) => {
+                    triggerRefs.current[idx] = el;
+                  }}
+                  id={`faq-trigger-${idx}`}
                   type="button"
                   onClick={() => toggle(idx)}
+                  onKeyDown={(e) => handleKeyDown(e, idx)}
+                  aria-expanded={itemOpen}
+                  aria-controls={`faq-panel-${idx}`}
+                  data-state={itemOpen ? "open" : "closed"}
                   className="w-full px-5 py-4 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-3.5 sm:gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-2"
-                  aria-expanded={isOpen}
                 >
                   <span className="text-[16px] sm:text-[19px] font-medium text-navy leading-[1.35]">
                     {item.question}
@@ -91,14 +100,15 @@ export default function Faq() {
 
                   {/* Skeuomorphic Circular Indicator Chip (webild.io style: physical lighting, continuous icon, no gap) */}
                   <span
+                    data-state={itemOpen ? "open" : "closed"}
                     className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-150 ${
-                      isOpen
+                      itemOpen
                         ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.15] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
                         : "bg-gradient-to-b from-[#FFFFFF] to-[#F2F5F9] border-[#10294B]/[0.12] shadow-[inset_0_1px_0_#FFFFFF,0_1px_2px_rgba(16,41,75,0.06)] hover:border-[#10294B]/[0.20]"
                     }`}
                     aria-hidden="true"
                   >
-                    {isOpen ? (
+                    {itemOpen ? (
                       <X
                         size={17}
                         strokeWidth={2.4}
@@ -116,8 +126,12 @@ export default function Faq() {
 
                 {/* Accordion Body with Smooth CSS Grid Transition */}
                 <div
+                  id={`faq-panel-${idx}`}
+                  role="region"
+                  aria-labelledby={`faq-trigger-${idx}`}
+                  data-state={itemOpen ? "open" : "closed"}
                   className={`grid transition-[grid-template-rows] duration-250 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    itemOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="overflow-hidden">

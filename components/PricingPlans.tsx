@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SegmentedToggle from "@/components/ui/SegmentedToggle";
 import { findParking, listSpot } from "@/lib/cta";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 // CONFIRM WITH CLIENT BEFORE LAUNCH: from ₹40/hr, ₹2,499/month, about ₹125/day, 10% host fee (90% payout), pause/roll-over policy.
 export const PRICING_DATA = {
@@ -59,7 +60,7 @@ export const PRICING_DATA = {
 
 export default function PricingPlans() {
   const [activeTab, setActiveTab] = useState<"drivers" | "owners">("drivers");
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const isReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const handleHash = () => {
@@ -70,14 +71,6 @@ export default function PricingPlans() {
     handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
   const { driverPayAsYouGo, driverMonthlyPass, ownerListing } = PRICING_DATA;
@@ -107,7 +100,10 @@ export default function PricingPlans() {
       />
 
       {/* Outer Panel: margin-top matching 'How it works' (mt-9 sm:mt-11) */}
-      <div className="mt-9 sm:mt-11 w-full rounded-[20px] min-[640px]:rounded-[24px] p-2 min-[640px]:p-[10px] bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)]">
+      <div
+        data-perspective={activeTab}
+        className="mt-9 sm:mt-11 w-full rounded-[20px] min-[640px]:rounded-[24px] p-2 min-[640px]:p-[10px] bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)]"
+      >
         {/* ============================================================== */}
         {/* VIEW 1: DRIVERS VIEW (Two white cards, 10px gap, equal height)  */}
         {/* ============================================================== */}
@@ -116,6 +112,7 @@ export default function PricingPlans() {
             id="pricing-panel-drivers"
             role="tabpanel"
             aria-labelledby="pricing-tab-drivers"
+            data-state="active"
             className="w-full grid grid-cols-1 min-[900px]:grid-cols-2 gap-2.5 items-stretch animate-hero-block"
           >
             {/* Card 1: Pay as you go (Solid White Card) */}
@@ -271,6 +268,7 @@ export default function PricingPlans() {
             id="pricing-panel-owners"
             role="tabpanel"
             aria-labelledby="pricing-tab-owners"
+            data-state="active"
             className="w-full animate-hero-block"
           >
             <div

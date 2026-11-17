@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { useCarouselMachine } from "@/lib/state/useCarouselMachine";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 export interface SpaceItem {
   id: string;
@@ -43,55 +45,20 @@ const spacesItems: SpaceItem[] = [
 ];
 
 export default function SpacesSwapper() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [epoch, setEpoch] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const isReducedMotion = useReducedMotion();
+  const {
+    activeIndex,
+    epoch,
+    isPaused,
+    select,
+    handlers,
+    attributes: carouselAttributes,
+  } = useCarouselMachine({
+    totalItems: spacesItems.length,
+    intervalMs: 6000,
+  });
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const isPausedRef = useRef(isPaused);
-  isPausedRef.current = isPaused;
-
-  // Detect prefers-reduced-motion
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
-  // Listen to visibility change to pause when tab is hidden
-  useEffect(() => {
-    const handleVisibility = () => {
-      setIsPaused(document.visibilityState === "hidden");
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, []);
-
-  const handleSelectTab = useCallback((index: number) => {
-    setActiveIndex(index);
-    setEpoch((prev) => prev + 1);
-  }, []);
-
-  const handleNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % spacesItems.length);
-    setEpoch((prev) => prev + 1);
-  }, []);
-
-  // Guaranteed 6000ms auto-advance cycle
-  useEffect(() => {
-    if (isReducedMotion) return;
-
-    const timer = setInterval(() => {
-      if (!isPausedRef.current) {
-        handleNext();
-      }
-    }, 6000);
-
-    return () => clearInterval(timer);
-  }, [handleNext, epoch, isReducedMotion]);
 
   // Keyboard navigation for WAI-ARIA tablist
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
@@ -112,7 +79,7 @@ export default function SpacesSwapper() {
     }
 
     if (targetIndex !== -1) {
-      handleSelectTab(targetIndex);
+      select(targetIndex);
       tabRefs.current[targetIndex]?.focus();
     }
   };
@@ -136,20 +103,22 @@ export default function SpacesSwapper() {
           role="tablist"
           aria-label="Parking space categories"
           aria-orientation="vertical"
+          {...carouselAttributes}
+          {...handlers}
           className="flex flex-col w-full"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={() => setIsPaused(false)}
         >
           {spacesItems.map((item, index) => {
             const isActive = index === activeIndex;
 
             return (
-              <div key={item.id} className="relative w-full">
+              <div
+                key={item.id}
+                className="relative w-full"
+                data-state={isActive ? "active" : "inactive"}
+              >
                 {/* Hairline + animated progress line */}
                 <div className="relative h-px w-full bg-[#10294B]/[0.15]">
-                  {isActive && (
+                  {isActive && !isReducedMotion && (
                     <div
                       key={`progress-${activeIndex}-${epoch}`}
                       className="absolute inset-y-0 left-0 w-full bg-[#10294B] spaces-progress-bar origin-left pointer-events-none"
@@ -170,8 +139,9 @@ export default function SpacesSwapper() {
                   role="tab"
                   aria-selected={isActive}
                   aria-controls="spaces-tabpanel"
+                  data-state={isActive ? "active" : "inactive"}
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => handleSelectTab(index)}
+                  onClick={() => select(index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   className="w-full text-left bg-transparent border-none p-0 cursor-pointer focus-visible:outline focus-visible:outline-[2px] focus-visible:outline-navy/20 focus-visible:outline-offset-4 block select-none"
                 >
@@ -217,6 +187,7 @@ export default function SpacesSwapper() {
         id="spaces-tabpanel"
         role="tabpanel"
         aria-labelledby={`spaces-tab-${spacesItems[activeIndex].id}`}
+        data-active-index={activeIndex}
         className="w-full rounded-[20px] md:rounded-[24px] p-2.5 bg-[var(--panel)] border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.05)] overflow-hidden aspect-square md:aspect-auto md:h-full flex items-center justify-center"
       >
         <div className="relative w-full h-full min-h-[340px] md:min-h-0 rounded-[12px] md:rounded-[14px] overflow-hidden bg-ice">
@@ -225,6 +196,7 @@ export default function SpacesSwapper() {
             return (
               <div
                 key={item.id}
+                data-state={isActive ? "active" : "inactive"}
                 className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                   isActive
                     ? "opacity-100 z-10"
