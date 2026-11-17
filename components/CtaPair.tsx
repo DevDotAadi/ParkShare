@@ -1,4 +1,6 @@
-"use client";
+/**
+ * Navbar and mobile menu show only Find parking. Hero, final call to action and other sections show both, Find parking first, then List a spot.
+ */
 
 import React from "react";
 import Button from "@/components/ui/Button";
@@ -8,8 +10,7 @@ export interface CtaPairProps {
   size?: "md" | "lg";
   align?: "start" | "center" | "end";
   stackBelow?: number; // Breakpoint in px below which buttons stack vertically at full width (default 480)
-  gap?: 8 | 12; // Gap in px between buttons (default 12, navbar uses 8)
-  hideSecondaryBelow1100?: boolean; // When true, hides "List a spot" between 900px and 1100px
+  gap?: 8 | 12; // Gap in px between buttons (default 12)
   onItemClick?: () => void;
   className?: string;
   forceStacked?: boolean; // When true, always stacks vertically (e.g., mobile menu drawer)
@@ -20,7 +21,6 @@ export default function CtaPair({
   align = "center",
   stackBelow = 480,
   gap = 12,
-  hideSecondaryBelow1100 = false,
   onItemClick,
   className = "",
   forceStacked = false,
@@ -70,14 +70,9 @@ export default function CtaPair({
     ? "w-full min-[480px]:w-auto max-w-[320px] min-[480px]:max-w-none justify-between min-[480px]:justify-center"
     : "justify-center";
 
-  const button2Classes = [
-    is480
-      ? "w-full min-[480px]:w-auto max-w-[320px] min-[480px]:max-w-none justify-between min-[480px]:justify-center"
-      : "justify-center",
-    hideSecondaryBelow1100 ? "hidden min-[1100px]:inline-flex" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const button2Classes = is480
+    ? "w-full min-[480px]:w-auto max-w-[320px] min-[480px]:max-w-none justify-between min-[480px]:justify-center"
+    : "justify-center";
 
   return (
     <div className={containerClasses}>

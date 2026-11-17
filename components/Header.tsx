@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import CtaPair from "@/components/CtaPair";
+import Button from "@/components/ui/Button";
+import { findParking } from "@/lib/cta";
 
 export default function Header() {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -79,17 +80,13 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right Column: Right-aligned CtaPair size "md", align end, 8px gap */}
+        {/* Right Column: Right-aligned single Button "Find parking" */}
         <div className="flex items-center justify-end">
-          {/* Desktop: CtaPair size "md", align end, 8px gap. Between 900px and 1100px shows only "Find parking" */}
+          {/* Desktop: Single shared Button "Find parking", size "md" */}
           <div className="hidden min-[900px]:block">
-            <CtaPair
-              size="md"
-              align="end"
-              gap={8}
-              hideSecondaryBelow1100={true}
-              stackBelow={0}
-            />
+            <Button href={findParking.href} size="md">
+              {findParking.label}
+            </Button>
           </div>
 
           {/* Under 900px: 44px solid circular menu button */}
@@ -149,12 +146,15 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="mt-auto pt-6 border-t border-white/10 w-full">
-            <CtaPair
+          <div className="mt-auto pt-6 border-t border-white/10 w-full flex justify-center">
+            <Button
+              href={findParking.href}
               size="md"
-              forceStacked={true}
-              onItemClick={() => setMobileMenuOpen(false)}
-            />
+              className="w-full max-w-[320px] justify-between"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {findParking.label}
+            </Button>
           </div>
         </div>
       )}

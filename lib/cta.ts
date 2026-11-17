@@ -1,12 +1,7 @@
 /**
  * SINGLE SOURCE OF TRUTH FOR PARKSHARE CALL-TO-ACTIONS
  *
- * The site has exactly two primary actions:
- * 1. Drivers: "Find parking"
- * 2. Owners:  "List a spot"
- *
- * Whenever both appear together, the order is always "Find parking" first,
- * then "List a spot".
+ * Navbar and mobile menu show only Find parking. Hero, final call to action and other sections show both, Find parking first, then List a spot.
  */
 
 // TODO: Replace href with the real app or signup URL; changing it here updates every button on the site.
