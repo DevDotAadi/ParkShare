@@ -164,7 +164,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright + Glassmorphic Social Buttons */}
         <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6 w-full">
           <p className="text-[14px] text-[#566070] font-normal text-center sm:text-left">
-            &copy; 2026 ParkShare
+            &copy; 2026 ParkShare. All rights reserved.
           </p>
 
           {/* Pure White Circular Social Icons */}
