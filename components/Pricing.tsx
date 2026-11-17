@@ -5,7 +5,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="w-full bg-white py-[clamp(72px,9vw,128px)] scroll-mt-[96px]"
+      className="w-full bg-white scroll-mt-[96px]"
     >
       {/* Anchor for backward compatibility with #owners links */}
       <span

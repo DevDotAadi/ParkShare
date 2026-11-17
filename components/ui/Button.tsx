@@ -12,22 +12,20 @@ import { ArrowUpRight } from "lucide-react";
  * - Body: Fully rounded pill, Helvetica 16px weight 500, navy #10294B.
  *   - Size "lg": height 52px, padding-left 24px, padding-right 8px (hero, Owners, final CTA).
  *   - Size "md": height 44px, padding-left 20px, padding-right 6px (navbar, mobile menu).
- * - Surface: #FFFFFF + vertical gradient to rgba(16,41,75,0.05). Edge: 1px solid rgba(16,41,75,0.14).
- *   - Layered shadow: inset 0 1px 0 #FFFFFF (top highlight), inset 0 -1px 0 rgba(16,41,75,0.08)
- *     (bottom inner edge), 0 1px 1px rgba(16,41,75,0.10), 0 6px 12px -4px rgba(16,41,75,0.28).
- *   - Works on sky-blue photo background, navy band, paper surface, and white background.
+ * - Surface: #FFFFFF + vertical linear-gradient to #E8EDF5 (or #E2E8F2).
+ *   - Edge: 1px solid rgba(16,41,75,0.16) on top, left and right, border-bottom-color rgba(16,41,75,0.28).
+ *   - Inset shadows only (no outer shadow, no drop shadow, nothing outside button edge):
+ *     inset 0 1px 0 #FFFFFF (top highlight),
+ *     inset 0 0 0 1px rgba(255,255,255,0.6) (inner rim light),
+ *     inset 0 -2px 0 rgba(16,41,75,0.08) (bottom inner shade band).
  * - Arrow chip: Circle on right, 36px ("lg") or 32px ("md"), vertically centred.
- *   - Lucide ArrowUpRight at 18px ("lg") or 16px ("md"), stroke width 2, navy #10294B.
- *   - Chip surface: #EEF2F7, solid, evenly filling the bubble with no bottom white line/gap.
- *   - Inset shadows: inset 0 1px 2px rgba(16,41,75,0.10).
- *   - Edge: 1px border rgba(16,41,75,0.08). Icon is aria-hidden.
- * - Hover: Body stays #FFFFFF (border-color darkens slightly), chip transitions subtly to cool grey #E2E8F0 (border-color rgba(16,41,75,0.14)), arrow stays navy #10294B.
- *   - No color inversion, no blue highlight, no bottom gap or crescent.
- *   - Transition ONLY background-color, color, border-color, and box-shadow over 150ms ease-in-out.
- *   - No translate, no scale, no shadow growth, no movement.
- * - Active (pressed): Shadows stay as they are except drop shadow becomes inset 0 1px 3px rgba(16,41,75,0.22).
- *   - Body background-color #F5F7FA. No movement.
- * - Focus-visible: Two-tone ring: 0 0 0 3px #FFFFFF, 0 0 0 6px #2864E8.
+ *   - Lucide ArrowUpRight at 18px ("lg") or 16px ("md"), stroke width 2.
+ *   - Chip surface: #EDF1F7 + gradient to rgba(255,255,255,0.6).
+ *   - Inset shadows only: inset 0 1px 2px rgba(16,41,75,0.20), inset 0 -1px 0 rgba(255,255,255,0.9).
+ *   - Edge: 1px border rgba(16,41,75,0.08).
+ * - Hover: Button body background-color shifts to #EEF4FF (gradient stays); chip turns cobalt with white arrow.
+ * - Active (pressed): Bottom shade band replaced by inset 0 2px 3px rgba(16,41,75,0.20), no movement.
+ * - Focus-visible: Two-tone ring: 0 0 0 3px #FFFFFF, 0 0 0 6px #2864E8 (accessibility ring on keyboard focus only).
  * - Label: white-space nowrap, never wraps.
  * - Under 480px: Groups stack vertically full width (max 320px) with 12px gap, label left-aligned
  *   and chip pushed to far right (justify-content space-between).

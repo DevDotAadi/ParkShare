@@ -38,11 +38,10 @@ export default function Header() {
 
   return (
     <header
-      className={`h-[80px] w-full z-50 absolute top-0 left-0 right-0 bg-transparent transition-all duration-300 ease-in-out ${
-        isAtTop
-          ? "opacity-100 visible pointer-events-auto translate-y-0"
-          : "opacity-0 invisible pointer-events-none -translate-y-4"
-      }`}
+      className={`h-[80px] w-full z-50 absolute top-0 left-0 right-0 bg-transparent transition-all duration-300 ease-in-out ${isAtTop
+        ? "opacity-100 visible pointer-events-auto translate-y-0"
+        : "opacity-0 invisible pointer-events-none -translate-y-4"
+        }`}
     >
       {/* 3-Column Grid Container: 1fr auto 1fr mathematically centres the centre column */}
       <div className="wrap h-full grid grid-cols-[1fr_auto_1fr] items-center">

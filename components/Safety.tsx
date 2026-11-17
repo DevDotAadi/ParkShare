@@ -64,7 +64,7 @@ export default function Safety() {
   return (
     <section
       id="trust"
-      className="w-full bg-white py-[clamp(72px,9vw,128px)] scroll-mt-[96px]"
+      className="w-full bg-white scroll-mt-[96px]"
     >
       <div className="wrap">
         {/* Centered Header */}

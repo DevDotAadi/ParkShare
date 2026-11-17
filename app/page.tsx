@@ -24,11 +24,20 @@ export default function Home() {
       {/* 2nd Section: How It Works */}
       <HowItWorks />
 
+      {/* Spacer 1:1 like webild.io */}
+      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
+
       {/* 3rd Section: Pricing (replacing space owners section) */}
       <Pricing />
 
+      {/* Spacer 1:1 like webild.io */}
+      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
+
       {/* 4th Section: Safety & Trust (rebuilt framed panel) */}
       <Safety />
+
+      {/* Spacer 1:1 like webild.io */}
+      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
 
       {/* Final CTA Section */}
       <section
