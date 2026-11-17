@@ -90,8 +90,8 @@ export default function Safety() {
                     key={idx}
                     className={`p-6 min-[600px]:p-8 flex flex-col items-start text-left ${feature.hairlineClass}`}
                   >
-                    {/* (1) 44px square icon box */}
-                    <div className="w-11 h-11 rounded-[12px] bg-[#EEF3FB] flex items-center justify-center text-navy shrink-0">
+                    {/* (1) 44px square icon box: pure white, clean outline */}
+                    <div className="w-11 h-11 rounded-[12px] bg-white border border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] flex items-center justify-center text-navy shrink-0">
                       <Icon size={22} strokeWidth={1.5} className="text-navy" />
                     </div>
 

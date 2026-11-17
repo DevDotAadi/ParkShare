@@ -161,14 +161,14 @@ export default function Footer() {
             &copy; 2026 ParkShare
           </p>
 
-          {/* Glassmorphic Social Icons */}
+          {/* Pure White Circular Social Icons */}
           <div className="flex items-center gap-3">
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
-              className="w-10 h-10 rounded-full bg-[#F4F7FB]/80 backdrop-blur-sm border border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] flex items-center justify-center text-navy hover:bg-white hover:border-[#10294B]/20 hover:shadow-[0_2px_4px_rgba(16,41,75,0.08)] transition-all duration-150"
+              className="w-10 h-10 rounded-full bg-white border border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] flex items-center justify-center text-navy hover:bg-[#F9FAFB] hover:border-[#10294B]/20 transition-all duration-150"
             >
               <Twitter className="w-4 h-4 stroke-[1.8]" />
             </a>
@@ -177,7 +177,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-10 h-10 rounded-full bg-[#F4F7FB]/80 backdrop-blur-sm border border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] flex items-center justify-center text-navy hover:bg-white hover:border-[#10294B]/20 hover:shadow-[0_2px_4px_rgba(16,41,75,0.08)] transition-all duration-150"
+              className="w-10 h-10 rounded-full bg-white border border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] flex items-center justify-center text-navy hover:bg-[#F9FAFB] hover:border-[#10294B]/20 transition-all duration-150"
             >
               <Instagram className="w-4 h-4 stroke-[1.8]" />
             </a>
@@ -186,14 +186,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-10 h-10 rounded-full bg-[#F4F7FB]/80 backdrop-blur-sm border border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] flex items-center justify-center text-navy hover:bg-white hover:border-[#10294B]/20 hover:shadow-[0_2px_4px_rgba(16,41,75,0.08)] transition-all duration-150"
+              className="w-10 h-10 rounded-full bg-white border border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] flex items-center justify-center text-navy hover:bg-[#F9FAFB] hover:border-[#10294B]/20 transition-all duration-150"
             >
               <Linkedin className="w-4 h-4 stroke-[1.8]" />
             </a>
             <a
               href="#top"
               aria-label="Email"
-              className="w-10 h-10 rounded-full bg-[#F4F7FB]/80 backdrop-blur-sm border border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] flex items-center justify-center text-navy hover:bg-white hover:border-[#10294B]/20 hover:shadow-[0_2px_4px_rgba(16,41,75,0.08)] transition-all duration-150"
+              className="w-10 h-10 rounded-full bg-white border border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] flex items-center justify-center text-navy hover:bg-[#F9FAFB] hover:border-[#10294B]/20 transition-all duration-150"
             >
               <Mail className="w-4 h-4 stroke-[1.8]" />
             </a>

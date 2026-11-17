@@ -12,16 +12,15 @@ import { ArrowUpRight } from "lucide-react";
  * - Body: Fully rounded pill, Helvetica 16px weight 500, navy #10294B.
  *   - Size "lg": height 52px, padding-left 24px, padding-right 8px (hero, Owners, final CTA).
  *   - Size "md": height 44px, padding-left 20px, padding-right 6px (navbar, mobile menu).
- * - Surface: #FFFFFF + subtle vertical linear-gradient to #F6F8FB (crisp white, single clean edge).
+ * - Surface: Pure #FFFFFF crisp key appearance with single clean edge (no blue tint or highlights).
  *   - Edge: 1px solid rgba(16,41,75,0.14) uniform edge all around.
- *   - Inset shadows: inset 0 1px 0 rgba(255,255,255,0.95) (top highlight only, no bottom shade lines).
+ *   - Inset shadows: inset 0 1px 0 rgba(255,255,255,1) (top highlight only).
  * - Arrow chip: Circle on right, 36px ("lg") or 32px ("md"), vertically centred.
  *   - Lucide ArrowUpRight at 18px ("lg") or 16px ("md"), stroke width 2, navy #10294B.
- *   - Chip surface: #EEF2F7 + subtle gradient.
- *   - Inset shadows: inset 0 1px 2px rgba(16,41,75,0.12), inset 0 -1px 0 rgba(255,255,255,0.9).
- *   - Edge: 1px border rgba(16,41,75,0.08).
- * - Hover: Body stays clean #FFFFFF (border slightly enhances), chip transitions to subtle cool grey #E2E8F0.
- *   - NO blue highlight, NO color inversion, arrow stays navy #10294B.
+ *   - Chip surface: Pure #FFFFFF, 1px border rgba(16,41,75,0.12), shadow 0 1px 2px rgba(16,41,75,0.06).
+ *   - Edge: 1px border rgba(16,41,75,0.12).
+ * - Hover: Pure #FFFFFF (border slightly enhances), chip stays pure #FFFFFF (border rgba(16,41,75,0.22)).
+ *   - Absolutely NO blue highlight, NO color inversion, arrow stays navy #10294B.
  * - Active (pressed): Bottom band becomes inset 0 1px 3px rgba(16,41,75,0.16), chip #DCE3ED, no blue.
  * - Focus-visible: Clean focus ring for keyboard navigation only.
  * - Label: white-space nowrap, never wraps.

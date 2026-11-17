@@ -107,7 +107,7 @@ b, strong {
 /* ==========================================================================
    PARKSHARE SHARED SKEUOMORPHIC BUTTON SYSTEM (PART A)
    Single visual variant site-wide with arrow chip
-   Crisp white surface + clean single edge + top highlight only (no double bottom lines)
+   Pure white surface + clean single edge + no blue highlights sitewide
    ========================================================================== */
 .btn-skeuo {
   display: inline-flex;
@@ -120,9 +120,9 @@ b, strong {
   line-height: 1;
   color: #10294B;
   background-color: #FFFFFF;
-  background-image: linear-gradient(to bottom, #FFFFFF 0%, #F6F8FB 100%);
+  background-image: none;
   border: 1px solid rgba(16, 41, 75, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -137,13 +137,13 @@ b, strong {
 }
 
 .btn-skeuo:active {
-  background-color: #F8FAFC;
-  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.14);
+  background-color: #F8F9FA;
+  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.12);
 }
 
 .btn-skeuo:focus-visible {
   outline: none;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 0 0 3px #FFFFFF, 0 0 0 5px rgba(16, 41, 75, 0.35);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 0 0 3px #FFFFFF, 0 0 0 5px rgba(16, 41, 75, 0.25);
 }
 
 .btn-skeuo-chip {
@@ -152,28 +152,28 @@ b, strong {
   justify-content: center;
   border-radius: 9999px;
   flex-shrink: 0;
-  background-color: #EEF2F7;
-  background-image: linear-gradient(to bottom, rgba(16, 41, 75, 0.03) 0%, rgba(255, 255, 255, 0.7) 100%);
-  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.12);
-  border: 1px solid rgba(16, 41, 75, 0.08);
+  background-color: #FFFFFF;
+  background-image: none;
+  box-shadow: 0 1px 2px rgba(16, 41, 75, 0.06);
+  border: 1px solid rgba(16, 41, 75, 0.12);
   color: #10294B;
   transition: background-color 150ms ease-in-out, color 150ms ease-in-out, border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
 }
 
 .btn-skeuo:hover .btn-skeuo-chip {
-  background-color: #E2E8F0;
+  background-color: #FFFFFF;
   background-image: none;
-  border-color: rgba(16, 41, 75, 0.14);
+  border-color: rgba(16, 41, 75, 0.22);
   color: #10294B;
-  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.14);
+  box-shadow: 0 1px 3px rgba(16, 41, 75, 0.10);
 }
 
 .btn-skeuo:active .btn-skeuo-chip {
-  background-color: #DCE3ED;
+  background-color: #F5F5F5;
   background-image: none;
-  border-color: rgba(16, 41, 75, 0.18);
+  border-color: rgba(16, 41, 75, 0.20);
   color: #10294B;
-  box-shadow: inset 0 1px 3px rgba(16, 41, 75, 0.20);
+  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.12);
 }
 
 /* Hero image mask: seamless sky blend at top (0-16%), full opacity in middle, and smooth dissolve at bottom (68-100%) */

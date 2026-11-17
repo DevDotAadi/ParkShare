@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -74,35 +74,35 @@ export default function Faq() {
                 key={idx}
                 className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-200 ${
                   isOpen
-                    ? "border-[#10294B]/[0.18] shadow-[0_4px_16px_-4px_rgba(16,41,75,0.08),inset_0_1px_0_#FFFFFF]"
-                    : "border-[#10294B]/[0.08] shadow-[0_1px_3px_rgba(16,41,75,0.04),inset_0_1px_0_#FFFFFF] hover:border-[#10294B]/[0.14]"
+                    ? "border-[#10294B]/[0.16] shadow-[0_4px_16px_-4px_rgba(16,41,75,0.06),inset_0_1px_0_#FFFFFF]"
+                    : "border-[#10294B]/[0.08] shadow-[0_1px_3px_rgba(16,41,75,0.03),inset_0_1px_0_#FFFFFF] hover:border-[#10294B]/[0.14]"
                 }`}
               >
                 {/* Accordion Trigger Button */}
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full px-6 py-5 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-cobalt focus-visible:outline-offset-2"
+                  className="w-full px-6 py-5 sm:px-7 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer select-none rounded-[16px] sm:rounded-[20px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy/20 focus-visible:outline-offset-2"
                   aria-expanded={isOpen}
                 >
                   <span className="text-[17px] sm:text-[19px] font-medium text-navy leading-[1.35]">
                     {item.question}
                   </span>
 
-                  {/* Skeuomorphic Circular Indicator Chip */}
+                  {/* Pure White Circular Indicator Chip: Plus that rotates 45deg into a Cross */}
                   <span
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-200 ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border bg-white transition-all duration-200 ${
                       isOpen
-                        ? "bg-[#E6ECF5] border-[#10294B]/[0.16] shadow-[inset_0_1px_2px_rgba(16,41,75,0.14)]"
-                        : "bg-[#EEF3FB] border-[#10294B]/[0.08] shadow-[inset_0_1px_1px_#FFFFFF,0_1px_2px_rgba(16,41,75,0.05)] hover:bg-[#E8EFF8]"
+                        ? "border-[#10294B]/[0.18] shadow-[0_1px_2px_rgba(16,41,75,0.06)]"
+                        : "border-[#10294B]/[0.10] shadow-[0_1px_2px_rgba(16,41,75,0.04)] hover:border-[#10294B]/[0.16]"
                     }`}
                     aria-hidden="true"
                   >
-                    <ChevronDown
+                    <Plus
                       size={18}
                       strokeWidth={2}
                       className={`text-navy transition-transform duration-200 ease-in-out ${
-                        isOpen ? "rotate-180" : "rotate-0"
+                        isOpen ? "rotate-45" : "rotate-0"
                       }`}
                     />
                   </span>

@@ -19,29 +19,28 @@ Every call-to-action button across the ParkShare application must use the shared
      - **Size "md" (44px tall)**: Height 44px, padding-left 20px (`pl-5`), padding-right 6px (`pr-1.5`). Used for Navbar and mobile menu drawer.
 
 3. **Surface & Physical Depth (Inner Lighting Only)**:
-   - Background: `#FFFFFF` with a subtle vertical linear gradient from `#FFFFFF` at the top to `#F6F8FB` at the bottom (pure crisp white key appearance, single clean edge).
-   - Edge: `1px solid rgba(16, 41, 75, 0.14)` uniform all around (no darker bottom border line).
-   - Inset box-shadow: `inset 0 1px 0 rgba(255, 255, 255, 0.95)` (top highlight only; no inner rim or bottom shade bands that create double lines).
+   - Background: Pure `#FFFFFF` (crisp white appearance, single clean edge, no blue tint).
+   - Edge: `1px solid rgba(16, 41, 75, 0.14)` uniform all around.
+   - Inset box-shadow: `inset 0 1px 0 rgba(255, 255, 255, 1)` (top highlight only; no inner rim or bottom shade bands).
    - Must work as a raised physical white key on all backgrounds through inner lighting and clean outline alone.
 
 4. **Arrow Chip**:
    - Shape: Circle on the right, vertically centered.
    - Dimensions: `36px` diameter for size "lg", `32px` diameter for size "md".
    - Icon: Lucide `ArrowUpRight` (`18px` for "lg", `16px` for "md"), stroke width `2`, navy `#10294B`.
-   - Chip surface: `#EEF2F7` with subtle vertical gradient from `rgba(16, 41, 75, 0.04)` at the top to `rgba(255, 255, 255, 0.75)` at the bottom.
-   - Chip shadows (inset only): `inset 0 1px 2px rgba(16, 41, 75, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.9)`.
-   - Chip edge: `1px solid rgba(16, 41, 75, 0.08)`. Reads as slightly pressed into the button.
+   - Chip surface: Pure `#FFFFFF`, `border: 1px solid rgba(16, 41, 75, 0.12)`, `shadow: 0 1px 2px rgba(16, 41, 75, 0.06)`. No blue tint or blue highlights.
+   - Chip edge: `1px solid rgba(16, 41, 75, 0.12)`.
 
 5. **Interaction States**:
    - **Hover**:
      - Body background-color stays `#FFFFFF` (border-color enhances slightly to `rgba(16, 41, 75, 0.24)`).
-     - Arrow chip transitions subtly to cool grey `#E2E8F0` (border `rgba(16, 41, 75, 0.14)`), arrow stays navy `#10294B`.
+     - Arrow chip stays pure `#FFFFFF` with border `rgba(16, 41, 75, 0.22)`, arrow stays navy `#10294B`.
      - Absolutely NO blue highlight, NO cobalt chip, NO color inversion.
      - Transition only `background-color`, `color`, `border-color`, and `box-shadow` over `150ms ease-in-out`.
      - Pointer cursor is active.
    - **Active (pressed)**:
-     - Replace the bottom shade band with `inset 0 1px 3px rgba(16, 41, 75, 0.16)`, same border, no movement.
-     - Chip becomes `#DCE3ED` with `inset 0 1px 3px rgba(16, 41, 75, 0.20)`. No blue.
+     - Body shifts subtly to `#F8F9FA`, shadow `inset 0 1px 2px rgba(16, 41, 75, 0.12)`.
+     - Chip becomes `#F5F5F5` with `inset 0 1px 2px rgba(16, 41, 75, 0.12)`. No blue.
    - **Focus-Visible**:
      - Clean focus ring added to the existing shadow stack only during keyboard navigation.
 
