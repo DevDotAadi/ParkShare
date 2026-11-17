@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -64,7 +64,7 @@ export default function Faq() {
           </h2>
         </div>
 
-        {/* Skeuomorphic Accordion Stack: stretched to full width of .wrap container */}
+        {/* Skeuomorphic Accordion Stack (webild.io style: full wrap width, physical depth) */}
         <div className="mt-9 sm:mt-11 w-full flex flex-col gap-3 sm:gap-3.5">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
@@ -72,7 +72,11 @@ export default function Faq() {
             return (
               <div
                 key={idx}
-                className="w-full rounded-[16px] sm:rounded-[20px] bg-white border border-[#10294B]/[0.08] shadow-[0_1px_2px_rgba(16,41,75,0.03),inset_0_1px_0_#FFFFFF] transition-colors duration-150"
+                className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-150 ${
+                  isOpen
+                    ? "border-[#10294B]/[0.14] shadow-[inset_0_1px_0_#FFFFFF,0_2px_6px_rgba(16,41,75,0.05)]"
+                    : "border-[#10294B]/[0.10] shadow-[inset_0_1px_0_#FFFFFF,0_1px_3px_rgba(16,41,75,0.03)] hover:border-[#10294B]/[0.16]"
+                }`}
               >
                 {/* Accordion Trigger Button */}
                 <button
@@ -85,17 +89,28 @@ export default function Faq() {
                     {item.question}
                   </span>
 
-                  {/* Pure White Circular Indicator Chip: Plus rotates 45deg to Cross with zero black border or glow */}
+                  {/* Skeuomorphic Circular Indicator Chip (webild.io style: physical lighting, continuous icon, no gap) */}
                   <span
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border border-[#10294B]/[0.10] bg-white shadow-[0_1px_2px_rgba(16,41,75,0.04)] transition-colors duration-150"
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-150 ${
+                      isOpen
+                        ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.15] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
+                        : "bg-gradient-to-b from-[#FFFFFF] to-[#F2F5F9] border-[#10294B]/[0.12] shadow-[inset_0_1px_0_#FFFFFF,0_1px_2px_rgba(16,41,75,0.06)] hover:border-[#10294B]/[0.20]"
+                    }`}
                     aria-hidden="true"
                   >
-                    <Plus
-                      strokeWidth={2}
-                      className={`text-navy w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-200 ease-in-out ${
-                        isOpen ? "rotate-45" : "rotate-0"
-                      }`}
-                    />
+                    {isOpen ? (
+                      <X
+                        size={17}
+                        strokeWidth={2.4}
+                        className="text-navy"
+                      />
+                    ) : (
+                      <Plus
+                        size={17}
+                        strokeWidth={2.4}
+                        className="text-navy"
+                      />
+                    )}
                   </span>
                 </button>
 
