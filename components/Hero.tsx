@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Header from "./Header";
-import Button from "@/components/ui/Button";
+import CtaPair from "@/components/CtaPair";
 
 export default function Hero() {
   return (
@@ -63,24 +63,9 @@ export default function Hero() {
             Book a nearby driveway, basement or office lot in minutes, or earn from the space you&apos;re not using.
           </p>
 
-          {/* Buttons: Two skeuomorphic white buttons, 52px tall (size="lg"), 12px gap */}
-          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
-            {/* TODO: Connect real app or search link */}
-            <Button
-              href="#spaces"
-              size="lg"
-              className="w-full sm:w-auto max-w-[320px] sm:max-w-none justify-between sm:justify-center"
-            >
-              Find parking
-            </Button>
-            {/* TODO: Connect real host listing or signup link */}
-            <Button
-              href="#owners"
-              size="lg"
-              className="w-full sm:w-auto max-w-[320px] sm:max-w-none justify-between sm:justify-center"
-            >
-              List a spot
-            </Button>
+          {/* Buttons: CtaPair size "lg", centred, Find parking then List a spot */}
+          <div className="mt-7 sm:mt-8 w-full">
+            <CtaPair size="lg" align="center" stackBelow={480} />
           </div>
         </div>
       </div>

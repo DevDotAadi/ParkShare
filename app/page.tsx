@@ -4,7 +4,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
 import Safety from "@/components/Safety";
 import Footer from "@/components/Footer";
-import Button from "@/components/ui/Button";
+import CtaPair from "@/components/CtaPair";
 
 export default function Home() {
   return (
@@ -43,23 +43,8 @@ export default function Home() {
             Join ParkShare and make the most of the parking your neighbourhood
             already has.
           </p>
-          <div className="mt-9 flex flex-col min-[480px]:flex-row items-center justify-center gap-3 w-full">
-            {/* TODO: Connect real app or search link */}
-            <Button
-              href="#spaces"
-              size="lg"
-              className="w-full min-[480px]:w-auto max-w-[320px] min-[480px]:max-w-none justify-between min-[480px]:justify-center"
-            >
-              Find parking
-            </Button>
-            {/* TODO: Connect real signup or host registration link */}
-            <Button
-              href="#owners"
-              size="lg"
-              className="w-full min-[480px]:w-auto max-w-[320px] min-[480px]:max-w-none justify-between min-[480px]:justify-center"
-            >
-              List a spot
-            </Button>
+          <div className="mt-9 w-full">
+            <CtaPair size="lg" align="center" stackBelow={480} />
           </div>
         </div>
       </section>

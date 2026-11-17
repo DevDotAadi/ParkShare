@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import Button from "@/components/ui/Button";
+import CtaPair from "@/components/CtaPair";
 
 export default function Header() {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -80,14 +80,17 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right Column: Right-aligned single solid pill button */}
+        {/* Right Column: Right-aligned CtaPair size "md", align end, 8px gap */}
         <div className="flex items-center justify-end">
-          {/* Desktop single solid pill button "Find parking" */}
+          {/* Desktop: CtaPair size "md", align end, 8px gap. Between 900px and 1100px shows only "Find parking" */}
           <div className="hidden min-[900px]:block">
-            {/* TODO: Connect real app or search link */}
-            <Button href="#spaces" size="md">
-              Find parking
-            </Button>
+            <CtaPair
+              size="md"
+              align="end"
+              gap={8}
+              hideSecondaryBelow1100={true}
+              stackBelow={0}
+            />
           </div>
 
           {/* Under 900px: 44px solid circular menu button */}
@@ -147,25 +150,12 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex flex-col gap-3 mt-auto pt-6 border-t border-white/10">
-            {/* TODO: Connect real app or search link */}
-            <Button
-              href="#spaces"
+          <div className="mt-auto pt-6 border-t border-white/10 w-full">
+            <CtaPair
               size="md"
-              className="w-full justify-between"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Find parking
-            </Button>
-            {/* TODO: Connect real host listing or signup link */}
-            <Button
-              href="#owners"
-              size="md"
-              className="w-full justify-between"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              List a spot
-            </Button>
+              forceStacked={true}
+              onItemClick={() => setMobileMenuOpen(false)}
+            />
           </div>
         </div>
       )}

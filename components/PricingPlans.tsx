@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SegmentedToggle from "@/components/ui/SegmentedToggle";
+import { findParking, listSpot } from "@/lib/cta";
 
 // CONFIRM WITH CLIENT BEFORE LAUNCH: from ₹40/hr, ₹2,499/month, about ₹125/day, 10% host fee (90% payout), pause/roll-over policy.
 export const PRICING_DATA = {
@@ -20,8 +21,8 @@ export const PRICING_DATA = {
       "Access directions for every space",
       "No commitment",
     ],
-    ctaText: "Find parking",
-    ctaHref: "#spaces", // TODO: Connect real app search link
+    ctaText: findParking.label,
+    ctaHref: findParking.href,
   },
   driverMonthlyPass: {
     title: "Monthly pass",
@@ -36,7 +37,7 @@ export const PRICING_DATA = {
       "Message your host in the app",
     ],
     ctaText: "Get monthly pass",
-    ctaHref: "#cta", // TODO: Connect monthly pass checkout link
+    ctaHref: findParking.href, // TODO: Connect monthly pass checkout link
   },
   ownerListing: {
     title: "List your space",
@@ -51,8 +52,8 @@ export const PRICING_DATA = {
       "Payouts straight to your bank account",
       "Drivers are verified before they book",
     ],
-    ctaText: "List a spot",
-    ctaHref: "#cta", // TODO: Connect host registration link
+    ctaText: listSpot.label,
+    ctaHref: listSpot.href,
   },
 } as const;
 
