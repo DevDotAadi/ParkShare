@@ -107,7 +107,7 @@ b, strong {
 /* ==========================================================================
    PARKSHARE SHARED SKEUOMORPHIC BUTTON SYSTEM (PART A)
    Single visual variant site-wide with arrow chip
-   Crisp white surface (never grey) + inner lighting + no blue highlight
+   Crisp white surface + clean single edge + top highlight only (no double bottom lines)
    ========================================================================== */
 .btn-skeuo {
   display: inline-flex;
@@ -120,10 +120,9 @@ b, strong {
   line-height: 1;
   color: #10294B;
   background-color: #FFFFFF;
-  background-image: linear-gradient(to bottom, #FFFFFF 0%, #F8FAFC 100%);
+  background-image: linear-gradient(to bottom, #FFFFFF 0%, #F6F8FB 100%);
   border: 1px solid rgba(16, 41, 75, 0.14);
-  border-bottom-color: rgba(16, 41, 75, 0.22);
-  box-shadow: inset 0 1px 0 #FFFFFF, inset 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(16, 41, 75, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -134,17 +133,17 @@ b, strong {
 .btn-skeuo:hover {
   background-color: #FFFFFF;
   border-color: rgba(16, 41, 75, 0.24);
-  box-shadow: inset 0 1px 0 #FFFFFF, inset 0 0 0 1px rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(16, 41, 75, 0.08);
+  box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
 .btn-skeuo:active {
   background-color: #F8FAFC;
-  box-shadow: inset 0 1px 0 #FFFFFF, inset 0 1px 3px rgba(16, 41, 75, 0.16);
+  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.14);
 }
 
 .btn-skeuo:focus-visible {
   outline: none;
-  box-shadow: inset 0 1px 0 #FFFFFF, inset 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(16, 41, 75, 0.05), 0 0 0 3px #FFFFFF, 0 0 0 5px rgba(16, 41, 75, 0.35);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 0 0 3px #FFFFFF, 0 0 0 5px rgba(16, 41, 75, 0.35);
 }
 
 .btn-skeuo-chip {
@@ -154,8 +153,8 @@ b, strong {
   border-radius: 9999px;
   flex-shrink: 0;
   background-color: #EEF2F7;
-  background-image: linear-gradient(to bottom, rgba(16, 41, 75, 0.04) 0%, rgba(255, 255, 255, 0.75) 100%);
-  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.9);
+  background-image: linear-gradient(to bottom, rgba(16, 41, 75, 0.03) 0%, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: inset 0 1px 2px rgba(16, 41, 75, 0.12);
   border: 1px solid rgba(16, 41, 75, 0.08);
   color: #10294B;
   transition: background-color 150ms ease-in-out, color 150ms ease-in-out, border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;

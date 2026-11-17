@@ -1,30 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Twitter, Instagram, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setTimeout(() => setSubscribed(false), 3000);
-      setEmail("");
-    }
-  };
-
   return (
     <footer className="w-full bg-white border-t border-[#10294B]/[0.08] pt-16 pb-12 sm:pt-20 sm:pb-16 text-navy relative overflow-hidden">
       <div className="wrap flex flex-col relative z-10">
-        {/* Top Area: Brand & Newsletter + Link Columns */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 w-full">
-          {/* Brand & Newsletter Column */}
-          <div className="flex flex-col items-start gap-6 max-w-sm w-full">
+        {/* Top Area: Brand & Link Column */}
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-10 sm:gap-16 w-full">
+          {/* Brand Column */}
+          <div className="flex flex-col items-start gap-4 max-w-sm w-full">
             <Link
               href="#top"
               className="inline-block transition-opacity hover:opacity-85"
@@ -42,29 +30,9 @@ export default function Footer() {
             <p className="text-[15px] leading-relaxed text-[#566070] font-normal max-w-xs">
               Parking shared between neighbours, homes and businesses.
             </p>
-
-            {/* Glassmorphic Newsletter Pill Input */}
-            <form onSubmit={handleSubmit} className="w-full max-w-[340px]">
-              <div className="flex items-center p-1.5 pl-4 rounded-full bg-[#F4F7FB]/80 backdrop-blur-md border border-[#10294B]/[0.10] shadow-[inset_0_1px_2px_rgba(16,41,75,0.05),0_1px_0_#FFFFFF] focus-within:border-cobalt/40 focus-within:bg-white transition-all w-full">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={subscribed ? "Thank you!" : "Your email"}
-                  required
-                  className="bg-transparent outline-none text-[14px] text-navy placeholder-[#566070]/60 flex-1 min-w-0 pr-2 font-normal"
-                />
-                <button
-                  type="submit"
-                  className="h-[36px] px-5 rounded-full bg-navy text-white text-[13px] font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(0,0,0,0.3),0_2px_4px_rgba(16,41,75,0.18)] transition-all hover:bg-navy/90 active:scale-[0.98] cursor-pointer shrink-0"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
           </div>
 
-          {/* Link Column: Clean links for existing sections in navbar order, no fake pages */}
+          {/* Link Column: Clean links for existing sections in navbar order */}
           <nav aria-label="Footer" className="flex flex-col gap-3">
             <a
               href="#spaces"
@@ -89,6 +57,12 @@ export default function Footer() {
               className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
             >
               Safety
+            </a>
+            <a
+              href="#faq"
+              className="text-[16px] font-medium text-navy/75 hover:text-navy transition-colors duration-150"
+            >
+              FAQ
             </a>
           </nav>
         </div>

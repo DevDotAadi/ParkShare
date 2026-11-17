@@ -19,16 +19,10 @@ Every call-to-action button across the ParkShare application must use the shared
      - **Size "md" (44px tall)**: Height 44px, padding-left 20px (`pl-5`), padding-right 6px (`pr-1.5`). Used for Navbar and mobile menu drawer.
 
 3. **Surface & Physical Depth (Inner Lighting Only)**:
-   - Background: `#FFFFFF` with a subtle vertical linear gradient from `#FFFFFF` at the top to `#F8FAFC` at the bottom (pure crisp white key appearance, never grey).
-   - Edge: `1px solid rgba(16, 41, 75, 0.14)` on top, left and right, and `border-bottom-color: rgba(16, 41, 75, 0.22)`.
-   - Inset box-shadow stack only (no outer drop shadows, no halos, nothing outside button bounds):
-     ```css
-     box-shadow:
-       inset 0 1px 0 #FFFFFF,
-       inset 0 0 0 1px rgba(255, 255, 255, 0.8),
-       inset 0 -1px 0 rgba(16, 41, 75, 0.05);
-     ```
-   - Must work as a raised physical white key on all backgrounds through inner lighting and bottom edge alone.
+   - Background: `#FFFFFF` with a subtle vertical linear gradient from `#FFFFFF` at the top to `#F6F8FB` at the bottom (pure crisp white key appearance, single clean edge).
+   - Edge: `1px solid rgba(16, 41, 75, 0.14)` uniform all around (no darker bottom border line).
+   - Inset box-shadow: `inset 0 1px 0 rgba(255, 255, 255, 0.95)` (top highlight only; no inner rim or bottom shade bands that create double lines).
+   - Must work as a raised physical white key on all backgrounds through inner lighting and clean outline alone.
 
 4. **Arrow Chip**:
    - Shape: Circle on the right, vertically centered.

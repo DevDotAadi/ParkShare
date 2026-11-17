@@ -12,12 +12,9 @@ import { ArrowUpRight } from "lucide-react";
  * - Body: Fully rounded pill, Helvetica 16px weight 500, navy #10294B.
  *   - Size "lg": height 52px, padding-left 24px, padding-right 8px (hero, Owners, final CTA).
  *   - Size "md": height 44px, padding-left 20px, padding-right 6px (navbar, mobile menu).
- * - Surface: #FFFFFF + subtle vertical linear-gradient to #F8FAFC (crisp white, never grey).
- *   - Edge: 1px solid rgba(16,41,75,0.14) on top, left and right, border-bottom-color rgba(16,41,75,0.22).
- *   - Inset shadows only (no outer shadow, no drop shadow, nothing outside button edge):
- *     inset 0 1px 0 #FFFFFF (top highlight),
- *     inset 0 0 0 1px rgba(255,255,255,0.8) (inner rim light),
- *     inset 0 -1px 0 rgba(16,41,75,0.05) (bottom subtle edge).
+ * - Surface: #FFFFFF + subtle vertical linear-gradient to #F6F8FB (crisp white, single clean edge).
+ *   - Edge: 1px solid rgba(16,41,75,0.14) uniform edge all around.
+ *   - Inset shadows: inset 0 1px 0 rgba(255,255,255,0.95) (top highlight only, no bottom shade lines).
  * - Arrow chip: Circle on right, 36px ("lg") or 32px ("md"), vertically centred.
  *   - Lucide ArrowUpRight at 18px ("lg") or 16px ("md"), stroke width 2, navy #10294B.
  *   - Chip surface: #EEF2F7 + subtle gradient.

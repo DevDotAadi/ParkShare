@@ -3,6 +3,7 @@ import Spaces from "@/components/Spaces";
 import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
 import Safety from "@/components/Safety";
+import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import CtaPair from "@/components/CtaPair";
 
@@ -35,6 +36,12 @@ export default function Home() {
 
       {/* 4th Section: Safety & Trust (rebuilt framed panel) */}
       <Safety />
+
+      {/* Spacer 1:1 like webild.io */}
+      <div className="h-[140px] md:h-[180px]" aria-hidden="true" />
+
+      {/* 5th Section: FAQ (skeuomorphic accordion) */}
+      <Faq />
 
       {/* Spacer before CTA */}
       <div className="h-[100px] md:h-[120px]" aria-hidden="true" />
