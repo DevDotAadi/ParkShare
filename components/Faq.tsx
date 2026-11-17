@@ -3,6 +3,7 @@
 import React from "react";
 import { Plus, X } from "lucide-react";
 import { useAccordionMachine } from "@/lib/state/useAccordionMachine";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 interface FaqItem {
   question: string;
@@ -43,6 +44,7 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function Faq() {
+  const isReducedMotion = useReducedMotion();
   const { isOpen, toggle, triggerRefs, handleKeyDown } = useAccordionMachine({
     totalItems: FAQ_ITEMS.length,
     defaultOpenIndex: 0,
@@ -74,7 +76,7 @@ export default function Faq() {
               <div
                 key={idx}
                 data-state={itemOpen ? "open" : "closed"}
-                className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-150 ${
+                className={`w-full rounded-[16px] sm:rounded-[20px] bg-white border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   itemOpen
                     ? "border-[#10294B]/[0.14] shadow-[inset_0_1px_0_#FFFFFF,0_2px_6px_rgba(16,41,75,0.05)]"
                     : "border-[#10294B]/[0.10] shadow-[inset_0_1px_0_#FFFFFF,0_1px_3px_rgba(16,41,75,0.03)] hover:border-[#10294B]/[0.16]"
@@ -101,7 +103,7 @@ export default function Faq() {
                   {/* Skeuomorphic Circular Indicator Chip (webild.io style: physical lighting, continuous icon, no gap) */}
                   <span
                     data-state={itemOpen ? "open" : "closed"}
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-150 ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ease-out ${
                       itemOpen
                         ? "bg-gradient-to-b from-[#F2F5F9] to-[#FFFFFF] border-[#10294B]/[0.15] shadow-[inset_0_1px_2px_rgba(16,41,75,0.08),0_1px_0_#FFFFFF]"
                         : "bg-gradient-to-b from-[#FFFFFF] to-[#F2F5F9] border-[#10294B]/[0.12] shadow-[inset_0_1px_0_#FFFFFF,0_1px_2px_rgba(16,41,75,0.06)] hover:border-[#10294B]/[0.20]"
@@ -124,18 +126,29 @@ export default function Faq() {
                   </span>
                 </button>
 
-                {/* Accordion Body with Smooth CSS Grid Transition */}
+                {/* Accordion Body with Smooth Webild.io Fall Transition */}
                 <div
                   id={`faq-panel-${idx}`}
                   role="region"
                   aria-labelledby={`faq-trigger-${idx}`}
                   data-state={itemOpen ? "open" : "closed"}
-                  className={`grid transition-[grid-template-rows] duration-250 ease-in-out ${
-                    itemOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                  }`}
+                  className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+                  style={{
+                    gridTemplateRows: itemOpen ? "1fr" : "0fr",
+                    transitionDuration: isReducedMotion ? "0ms" : undefined,
+                  }}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 pt-0 sm:px-7 sm:pb-6 text-[14.5px] sm:text-[16px] leading-[1.6] text-[#566070] font-normal">
+                    <p
+                      className={`px-5 pb-5 pt-0 sm:px-7 sm:pb-6 text-[14.5px] sm:text-[16px] leading-[1.65] text-[#566070] font-normal transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        itemOpen
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 -translate-y-2 pointer-events-none"
+                      }`}
+                      style={{
+                        transitionDuration: isReducedMotion ? "0ms" : undefined,
+                      }}
+                    >
                       {item.answer}
                     </p>
                   </div>
